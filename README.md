@@ -9,7 +9,7 @@ Faltam 7 dias para jam
 ## Assets ()
 * personagem()
 * inimigos()
-* * Cenário()
+* Cenário()
 * Trilha()
 * Efeitos Sonoros()
 * Arma(X)
@@ -34,10 +34,10 @@ Faltam 7 dias para jam
 ### Spawn
 * Inimigos()
 * power-ups()
-* Mais uma vida()
-* +10% velocidade de disparo ()
-* +15% velocidade de movimentação()
-* +10% aumento do dano da bala()
+	* Mais uma vida()
+	* +10% velocidade de disparo ()
+	* +15% velocidade de movimentação()
+	* +10% aumento do dano da bala()
 
 ### hud			
 * Tela de Início()
