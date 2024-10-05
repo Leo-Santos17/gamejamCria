@@ -3,48 +3,48 @@ Olá, esse repositório vai estar o código do jogo que vai estar na gamejam, em
 Faltam 7 dias para jam
 
 ## História()
-	* Início(X)
-	* Desfecho(X)
+* Início(X)
+* Desfecho(X)
 
 ## Assets ()
-	* personagem()
-	* inimigos()
-	* * Cenário()
-	* Trilha()
-	* Efeitos Sonoros()
-	* Arma(X)
+* personagem()
+* inimigos()
+* * Cenário()
+* Trilha()
+* Efeitos Sonoros()
+* Arma(X)
 	
 
 ## Programação
 ### Movimentação
-		* Personagem () | assets
-		* Inimigos() | assets
+* Personagem () | assets
+* Inimigos() | assets
 	
 ### Física
-		* Bala()
-###	Colisão
-		* Player()
-		* inimigos()
-		* cenário()
-###	Contagem
-		* Vidas()
-		* Balas()
-		* Tempo()
+* Bala()
+### Colisão
+* Player()
+* inimigos()
+* cenário()
+### Contagem
+* Vidas()
+* Balas()
+* Tempo()
 
-###	Spawn
-		* Inimigos()
-		* power-ups()
-			* Mais uma vida()
-			* +10% velocidade de disparo ()
-			* +15% velocidade de movimentação()
-			* +10% aumento do dano da bala()
+### Spawn
+* Inimigos()
+* power-ups()
+* Mais uma vida()
+* +10% velocidade de disparo ()
+* +15% velocidade de movimentação()
+* +10% aumento do dano da bala()
 
 ### hud			
-	* Tela de Início()
-	* pause()
-	* Game Over()
-	* Diálogos()
-	* Créditos()
+* Tela de Início()
+* pause()
+* Game Over()
+* Diálogos()
+* Créditos()
 	
 		
 		
