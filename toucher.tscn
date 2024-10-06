@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://4mdug42i1bo3"]
+
+[ext_resource type="Script" path="res://toucher.gd" id="1_wax0y"]
+[ext_resource type="Texture2D" uid="uid://dqcj74ne73pir" path="res://Arts/Monster/Monster.svg" id="2_73182"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_grscn"]
+
+[node name="Toucher" type="CharacterBody2D"]
+script = ExtResource("1_wax0y")
+
+[node name="Monster" type="Sprite2D" parent="."]
+texture = ExtResource("2_73182")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.76, 6.76)
+shape = SubResource("RectangleShape2D_grscn")
