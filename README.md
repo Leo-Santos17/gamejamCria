@@ -10,8 +10,8 @@ Faltam 7 dias para jam
 * personagem()
 * inimigos()
 * Cenário()
-* Trilha()
-* Efeitos Sonoros()
+* Trilha(x)
+* Efeitos Sonoros(x)
 * Arma(X)
 	
 
@@ -46,6 +46,4 @@ Faltam 7 dias para jam
 * Diálogos()
 * Créditos()
 	
-		
-		
 		
