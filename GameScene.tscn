@@ -1,25 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkaevt554tmps"]
+[gd_scene load_steps=3 format=3 uid="uid://dkaevt554tmps"]
 
 [ext_resource type="PackedScene" uid="uid://dmtpqkrq1n3wl" path="res://player.tscn" id="1_1rgi8"]
-[ext_resource type="PackedScene" uid="uid://4mdug42i1bo3" path="res://toucher.tscn" id="2_wkj0g"]
 [ext_resource type="PackedScene" uid="uid://dk8w3cbcij1s5" path="res://launcher.tscn" id="3_k5vcp"]
 
 [node name="Game" type="Node2D"]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_left = -500.0
-offset_top = -322.0
-offset_right = -460.0
-offset_bottom = -282.0
-scale = Vector2(34.6306, 26.7772)
-color = Color(0.403922, 0.270588, 1, 1)
-
-[node name="Toucher" parent="." instance=ExtResource("2_wkj0g")]
-position = Vector2(485, -19)
-scale = Vector2(0.68, 0.68)
 
 [node name="Player" parent="." instance=ExtResource("1_1rgi8")]
 position = Vector2(-7, -3)
