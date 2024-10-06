@@ -17,7 +17,7 @@ Faltam 7 dias para jam
 
 ## Programação
 ### Movimentação
-* Personagem () | assets
+* Personagem (X) | assets
 * Inimigos() | assets
 	
 ### Física
