@@ -17,16 +17,16 @@ shape = SubResource("CircleShape2D_dyfdl")
 
 [node name="Gun" type="Sprite2D" parent="Centro"]
 position = Vector2(33, 1)
-scale = Vector2(-1, 1)
+scale = Vector2(-1.32, 1.48)
 texture = ExtResource("2_4id0v")
 
 [node name="ShotingPoint" type="Marker2D" parent="Centro/Gun"]
 position = Vector2(-7, -2)
+rotation = 3.14159
 
 [node name="bullet" parent="Centro/Gun/ShotingPoint" instance=ExtResource("3_63r06")]
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

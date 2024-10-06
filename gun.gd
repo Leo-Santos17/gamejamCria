@@ -4,7 +4,7 @@ extends Area2D
 var bullets = 6
 
 func shoot() -> void:
-		#bullets-=1
+		bullets-=1
 		if bullets>3:
 			const BULLET = preload("res://Bullet.tscn")
 			var newBULLET = BULLET.instantiate()
