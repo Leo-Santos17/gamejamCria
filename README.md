@@ -1,6 +1,6 @@
 # GameJam Do Cria
 Olá, esse repositório vai estar o código do jogo que vai estar na gamejam, em breve mais atualizações
-Faltam 7 dias para jam
+Faltam 5 dias para jam
 
 ## História()
 * Início(X)
@@ -21,14 +21,14 @@ Faltam 7 dias para jam
 * Inimigos() | assets
 	
 ### Física
-* Bala()
+* Bala(X)
 ### Colisão
-* Player()
+* Player(X)
 * inimigos()
 * cenário()
 ### Contagem
-* Vidas()
-* Balas()
+* Vidas(X)
+* Balas(X)
 * Tempo()
 
 ### Spawn
