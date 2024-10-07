@@ -27,6 +27,7 @@ rotation = 3.14159
 [node name="bullet" parent="Centro/Gun/ShotingPoint" instance=ExtResource("3_63r06")]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.4
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

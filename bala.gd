@@ -39,15 +39,9 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	var distance = global_position.distance_to(player.global_position)
 	if distance < 600:
-		print("No alcance")
 		if bullets > 3:
 			shoot()
-			print("Pow")
 		elif bullets > 0:
 			shoot()
-			print("Balas Acabando")
 		else:
 			bullets = 6
-			print("Recarregando")
-	else:
-		print("Fora de Alcance")

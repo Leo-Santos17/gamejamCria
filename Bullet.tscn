@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://bullet.gd" id="1_mmvpg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4p3pf"]
+radius = 16.6666
 
 [node name="bullet" type="Area2D"]
 top_level = true
@@ -18,3 +19,5 @@ shape = SubResource("CircleShape2D_4p3pf")
 [node name="Bala" type="Sprite2D" parent="."]
 position = Vector2(4, 1)
 texture = ExtResource("1_1wqrh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
