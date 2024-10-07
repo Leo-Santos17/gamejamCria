@@ -1,13 +1,66 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwehymbi5jct"]
+[gd_scene load_steps=4 format=3 uid="uid://dwehymbi5jct"]
 
-[ext_resource type="Script" path="res://bala.gd" id="1_ut2mq"]
 [ext_resource type="Texture2D" uid="uid://cgn0o5getr05k" path="res://Arts/Gun/SpriteGun.png" id="2_4id0v"]
-[ext_resource type="PackedScene" uid="uid://c3wdiwqffst3x" path="res://Bullet.tscn" id="3_63r06"]
+
+[sub_resource type="GDScript" id="GDScript_atba7"]
+script/source = "extends Area2D
+
+@onready var pointShot = $Centro/Gun/ShotingPoint
+@onready var player = get_node(\"/root/Game/Player\")
+
+var bullets = 6
+var localSpeed = 3000
+var localRange = 700
+
+func _physics_process(delta: float) -> void:
+	_mira()
+	_giroArma()
+
+# Atira a cada 1.4 segundos
+func _on_timer_timeout() -> void:
+	checkDistance()
+
+
+
+func shoot() -> void:
+	bullets-=1
+	const BULLET = preload(\"res://Bullet.tscn\")
+	var newBULLET = BULLET.instantiate()
+	# Alterar atributos
+	newBULLET.speed = localSpeed
+	newBULLET.range = localRange
+	# Captura de posição e tiro
+	newBULLET.global_position = pointShot.global_position
+	newBULLET.global_rotation = pointShot.global_rotation
+	pointShot.add_child(newBULLET)
+		
+
+func _mira():
+	var player = player.global_position
+	look_at(player)
+
+func _giroArma():
+	var arma = get_global_transform().get_rotation()
+	if arma>1.5 or arma<-1.5:
+		scale.y = -1
+	else:
+		scale.y = 1
+
+func checkDistance():
+	var distance = global_position.distance_to(player.global_position)
+	if distance < 600:
+		if bullets > 3:
+			shoot()
+		elif bullets > 0:
+			shoot()
+		else:
+			bullets = 6
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dyfdl"]
 
 [node name="Gun" type="Area2D"]
-script = ExtResource("1_ut2mq")
+script = SubResource("GDScript_atba7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(19.52, 19.52)
@@ -23,8 +76,6 @@ texture = ExtResource("2_4id0v")
 [node name="ShotingPoint" type="Marker2D" parent="Centro/Gun"]
 position = Vector2(-7, -2)
 rotation = 3.14159
-
-[node name="bullet" parent="Centro/Gun/ShotingPoint" instance=ExtResource("3_63r06")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.4

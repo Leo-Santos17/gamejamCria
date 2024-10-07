@@ -12,9 +12,10 @@ radius = 11.5319
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3.04, 3.04)
+collision_layer = 2147483649
 script = ExtResource("1_ey1tx")
 
-[node name="Sprite00" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2, 4)
 texture = ExtResource("2_deeyj")
 
@@ -33,12 +34,17 @@ shape = SubResource("CircleShape2D_c0hr8")
 position = Vector2(-0.328947, 0)
 shape = SubResource("CircleShape2D_3yxle")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -25.9868
-offset_top = -21.0526
-offset_right = 135.013
-offset_bottom = 5.94737
-scale = Vector2(0.328947, 0.328947)
-value = 100.0
+[node name="StatusLife" type="ProgressBar" parent="."]
+offset_left = -16.9868
+offset_top = -14.6842
+offset_right = 169.013
+offset_bottom = 12.3158
+scale = Vector2(0.184211, 0.184211)
+allow_greater = true
+fill_mode = 1
+
+[node name="Cooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_timer_timeout"]

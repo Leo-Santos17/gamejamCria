@@ -16,7 +16,7 @@ texture = ExtResource("2_73182")
 scale = Vector2(6.76, 6.76)
 shape = SubResource("CircleShape2D_ybqfp")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="StatusLife" type="ProgressBar" parent="."]
 offset_left = -72.0
 offset_top = -103.0
 offset_right = 72.0

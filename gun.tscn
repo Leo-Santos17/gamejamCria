@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs78ctbxhnpfp"]
+[gd_scene load_steps=4 format=3 uid="uid://cs78ctbxhnpfp"]
 
 [ext_resource type="Script" path="res://gun.gd" id="1_3s8g7"]
 [ext_resource type="Texture2D" uid="uid://cgn0o5getr05k" path="res://Arts/Gun/SpriteGun.png" id="2_4f1yy"]
-[ext_resource type="PackedScene" uid="uid://c3wdiwqffst3x" path="res://Bullet.tscn" id="3_hm1vp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gn5yd"]
 
@@ -26,7 +25,3 @@ texture = ExtResource("2_4f1yy")
 position = Vector2(-7, -2)
 rotation = 3.14159
 scale = Vector2(2.48, -2.48)
-
-[node name="Bullet" parent="Centro/SpriteGun/ShotingPoint" instance=ExtResource("3_hm1vp")]
-position = Vector2(-0.27419, -0.193541)
-scale = Vector2(0.290323, 0.290323)

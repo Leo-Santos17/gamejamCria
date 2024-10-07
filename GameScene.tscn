@@ -1,8 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkaevt554tmps"]
+[gd_scene load_steps=8 format=3 uid="uid://dkaevt554tmps"]
 
 [ext_resource type="PackedScene" uid="uid://dmtpqkrq1n3wl" path="res://player.tscn" id="1_1rgi8"]
+[ext_resource type="Script" path="res://game_scene.gd" id="1_ubi70"]
+[ext_resource type="PackedScene" uid="uid://ddq0skkmi74os" path="res://power_up_Health.tscn" id="3_t82ml"]
+[ext_resource type="PackedScene" uid="uid://dk8w3cbcij1s5" path="res://launcher.tscn" id="4_105t6"]
+[ext_resource type="PackedScene" uid="uid://4381vrghwndw" path="res://power_up_sm.tscn" id="6_0wnuh"]
+[ext_resource type="PackedScene" uid="uid://lclsvfgqegyj" path="res://power_up_ds.tscn" id="7_3fsnw"]
+[ext_resource type="PackedScene" uid="uid://dcwuxp3lqkgrh" path="res://power_up_da.tscn" id="8_xejuk"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_ubi70")
 
 [node name="Player" parent="." instance=ExtResource("1_1rgi8")]
-position = Vector2(-7, -3)
+position = Vector2(1, 10)
+
+[node name="Launcher" parent="." instance=ExtResource("4_105t6")]
+position = Vector2(-1055, -246)
+
+[node name="Launcher5" parent="." instance=ExtResource("4_105t6")]
+position = Vector2(-1055, 472)
+
+[node name="PowerUp_SM" parent="." instance=ExtResource("6_0wnuh")]
+position = Vector2(232, -32)
+
+[node name="PowerUp_DS" parent="." instance=ExtResource("7_3fsnw")]
+position = Vector2(226, -95)
+
+[node name="PowerUp_DA" parent="." instance=ExtResource("8_xejuk")]
+position = Vector2(213, -152)
+
+[node name="PowerUp_Health" parent="." instance=ExtResource("3_t82ml")]
+position = Vector2(233, 24)
