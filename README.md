@@ -1,6 +1,6 @@
 # GameJam Do Cria
 Olá, esse repositório vai estar o código do jogo que vai estar na gamejam, em breve mais atualizações
-Faltam 5 dias para jam
+Faltam sei lá, a jam agora é pro dia 21/10
 
 ## História()
 * Início(X)
@@ -17,32 +17,32 @@ Faltam 5 dias para jam
 
 ## Programação
 ### Movimentação
-* Personagem (X) | assets
+* Personagem () | assets
 * Inimigos() | assets
 	
 ### Física
 * Bala(X)
 ### Colisão
 * Player(X)
-* inimigos()
+* inimigos(X)
 * cenário()
 ### Contagem
 * Vidas(X)
 * Balas(X)
-* Tempo()
+* Tempo(X)
 
 ### Spawn
-* Inimigos()
-* power-ups()
-	* Mais uma vida()
-	* +10% velocidade de disparo ()
-	* +15% velocidade de movimentação()
-	* +10% aumento do dano da bala()
+* Inimigos(X)
+* power-ups(X)
+	* Mais uma vida(X)
+	* +10% velocidade de disparo (X)
+	* +15% velocidade de movimentação(X)
+	* +10% aumento do dano da bala(X)
 
 ### hud			
 * Tela de Início()
-* pause()
-* Game Over()
+* pause(X)
+* Game Over(X)
 * Diálogos()
 * Créditos()
 	

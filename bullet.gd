@@ -2,7 +2,7 @@ extends Area2D
 
 var travelled_distance = 0
 var speed = 1000
-var range = 300
+var range = 500
 
 func _physics_process(delta: float) -> void:
 	

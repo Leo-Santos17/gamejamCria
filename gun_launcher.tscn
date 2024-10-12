@@ -10,7 +10,7 @@ script/source = "extends Area2D
 
 var bullets = 6
 var localSpeed = 3000
-var localRange = 700
+var localRange = 800
 
 func _physics_process(delta: float) -> void:
 	_mira()

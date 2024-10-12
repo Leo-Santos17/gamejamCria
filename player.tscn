@@ -24,11 +24,30 @@ position = Vector2(0.328947, 0)
 scale = Vector2(5.17211, 5.17211)
 shape = SubResource("CircleShape2D_c0hr8")
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="muni" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = 75.0
+offset_right = 20.0
+offset_bottom = 96.0
+
+[node name="quantAmmo" type="Label" parent="muni"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 1.90789
+offset_top = 1.64473
+offset_right = 41.9079
+offset_bottom = 24.6447
+text = "Text"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+zoom = Vector2(0.5, 0.5)
 
 [node name="Gun" parent="." instance=ExtResource("3_cgsxe")]
 
 [node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-0.328947, 0)
@@ -41,10 +60,14 @@ offset_right = 169.013
 offset_bottom = 12.3158
 scale = Vector2(0.184211, 0.184211)
 allow_greater = true
-fill_mode = 1
 
-[node name="Cooldown" type="Timer" parent="."]
+[node name="CooldownHurt" type="Timer" parent="."]
+one_shot = true
+
+[node name="CooldownPower" type="Timer" parent="."]
+wait_time = 3.0
 one_shot = true
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
-[connection signal="timeout" from="Cooldown" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CooldownPower" to="." method="_on_cooldown_power"]

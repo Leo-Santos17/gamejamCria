@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+@onready var scene = get_node("/root/Game/")
+
 var life = 10
 var lifeMax = life
 var is_ready = true
 var rateDamage = 1
+var hudAmmo : String
 
 var speedMove = 600
-var speedShoot = 300
+var speedShoot = 600*2
+var range = 600
 var damageMulti = 1
 
 func _ready() :
@@ -14,11 +18,15 @@ func _ready() :
 
 func _physics_process(delta):
 	move()
+	checkHurt()
+
+# Cooldown Hurt
+func checkHurt():
 	var overlappingMobs = $HurtBox.get_overlapping_bodies()
 	if overlappingMobs.size() > 1:
 		if is_ready:
 			is_ready = false
-			$Cooldown.start()
+			$CooldownHurt.start()
 			take_damage_py()
 
 # Move
@@ -34,7 +42,7 @@ func take_damage_py():
 	life -= rateDamage*overlappingMobs-1
 	status()
 	if life<=0:
-		print("Morreu")
+		scene.gameOver()
 
 # Dano da Bullet
 func take_damage():
@@ -43,8 +51,9 @@ func take_damage():
 	$StatusLife.value = life
 	status()
 	if life<=0:
-		print("Morreu")
+		scene.gameOver()
 
+# Power-Ups
 func powerSpeed(x):
 	speedMove *= x
 func powerSpeedShot(x):
@@ -56,10 +65,11 @@ func addLife(x):
 	life = lifeMax
 	upStatus()
 
+# Atualizar status
 func status():
 	$StatusLife.value = life
 
-
+# All Stats
 func upStatus():
 	$StatusLife.max_value = lifeMax
 	$StatusLife.value = life
@@ -70,4 +80,12 @@ func recLife(x):
 	status()
 
 func _on_timer_timeout() -> void:
+	is_ready = true
+
+func HUD(BM, B):
+	hudAmmo = str(BM)+"/"+str(B)
+	%quantAmmo.text = hudAmmo
+
+
+func _on_cooldown_power() -> void:
 	is_ready = true
