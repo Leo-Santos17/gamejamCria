@@ -7,7 +7,7 @@ Faltam 7 dias para jam
 * Desfecho(X)
 
 ## Assets ()
-* personagem()
+* personagem(x)
 * inimigos()
 * Cenário()
 * Trilha(x)
