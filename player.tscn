@@ -1,24 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmtpqkrq1n3wl"]
+[gd_scene load_steps=6 format=3 uid="uid://dmtpqkrq1n3wl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ey1tx"]
 [ext_resource type="Texture2D" uid="uid://be0vok6idhv5m" path="res://Arts/Player/PlayerTest.png" id="2_deeyj"]
 [ext_resource type="PackedScene" uid="uid://cs78ctbxhnpfp" path="res://gun.tscn" id="3_cgsxe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0hr8"]
-radius = 0.864778
+radius = 1.272
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3yxle"]
+radius = 11.5319
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3.04, 3.04)
+collision_layer = 2147483649
 script = ExtResource("1_ey1tx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(7.08, 7.08)
-shape = SubResource("CircleShape2D_c0hr8")
-
-[node name="Sprite00" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 position = Vector2(2, 4)
 texture = ExtResource("2_deeyj")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.328947, 0)
+scale = Vector2(5.17211, 5.17211)
+shape = SubResource("CircleShape2D_c0hr8")
+
+[node name="muni" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = 75.0
+offset_right = 20.0
+offset_bottom = 96.0
+
+[node name="quantAmmo" type="Label" parent="muni"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 1.90789
+offset_top = 1.64473
+offset_right = 41.9079
+offset_bottom = 24.6447
+text = "Text"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+zoom = Vector2(0.5, 0.5)
+
 [node name="Gun" parent="." instance=ExtResource("3_cgsxe")]
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.328947, 0)
+shape = SubResource("CircleShape2D_3yxle")
+
+[node name="StatusLife" type="ProgressBar" parent="."]
+offset_left = -16.9868
+offset_top = -14.6842
+offset_right = 169.013
+offset_bottom = 12.3158
+scale = Vector2(0.184211, 0.184211)
+allow_greater = true
+
+[node name="CooldownHurt" type="Timer" parent="."]
+one_shot = true
+
+[node name="CooldownPower" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CooldownPower" to="." method="_on_cooldown_power"]

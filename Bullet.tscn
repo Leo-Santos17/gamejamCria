@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3wdiwqffst3x"]
+
+[ext_resource type="Texture2D" uid="uid://c315ohpvqb1wq" path="res://Arts/Bullet/Bala.png" id="1_1wqrh"]
+[ext_resource type="Script" path="res://bullet.gd" id="1_mmvpg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4p3pf"]
+radius = 16.6666
+
+[node name="bullet" type="Area2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_mmvpg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.480001, 0.480001)
+shape = SubResource("CircleShape2D_4p3pf")
+
+[node name="Bala" type="Sprite2D" parent="."]
+position = Vector2(4, 1)
+texture = ExtResource("1_1wqrh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

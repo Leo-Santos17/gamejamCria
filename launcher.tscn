@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk8w3cbcij1s5"]
+
+[ext_resource type="Script" path="res://launcher.gd" id="1_iocxm"]
+[ext_resource type="Texture2D" uid="uid://dqcj74ne73pir" path="res://Arts/Monster/Monster.svg" id="1_mx54l"]
+[ext_resource type="PackedScene" uid="uid://dwehymbi5jct" path="res://gun_launcher.tscn" id="3_017ve"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cbyo"]
+radius = 25.0
+
+[node name="Launcher" type="CharacterBody2D"]
+script = ExtResource("1_iocxm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5cbyo")
+
+[node name="Bala" parent="." instance=ExtResource("3_017ve")]
+position = Vector2(0, 1)
+scale = Vector2(1.84, 1.84)
+
+[node name="Monster" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, 2.38419e-07)
+scale = Vector2(0.399999, 0.399999)
+texture = ExtResource("1_mx54l")
+
+[node name="StatusLife" type="ProgressBar" parent="."]
+offset_left = -43.0
+offset_top = -48.0
+offset_right = 90.0
+offset_bottom = -21.0
+scale = Vector2(0.64, 0.64)
+max_value = 3.0
+value = 3.0

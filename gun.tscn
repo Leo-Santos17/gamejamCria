@@ -16,7 +16,7 @@ shape = SubResource("CircleShape2D_gn5yd")
 [node name="Centro" type="Marker2D" parent="."]
 
 [node name="SpriteGun" type="Sprite2D" parent="Centro"]
-position = Vector2(16, 0)
+position = Vector2(24, 0)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = ExtResource("2_4f1yy")
