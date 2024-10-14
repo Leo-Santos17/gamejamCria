@@ -3,13 +3,13 @@ extends CharacterBody2D
 @onready var player = get_node("/root/Game/Player")
 
 const speed = 300
-var life = 50
+var life = 10
 const limitDistance = 100
 var hurtDamage = 3
 var dano
 
 func _ready() -> void:
-	$BarLife.initLife(life)
+	$BarLife.upgradeLife(life)
 
 func _physics_process(delta: float) -> void:
 	moveMob()

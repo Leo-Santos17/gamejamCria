@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmtpqkrq1n3wl"]
+[gd_scene load_steps=7 format=3 uid="uid://dmtpqkrq1n3wl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ey1tx"]
 [ext_resource type="Texture2D" uid="uid://be0vok6idhv5m" path="res://Arts/Player/PlayerTest.png" id="2_deeyj"]
 [ext_resource type="PackedScene" uid="uid://cs78ctbxhnpfp" path="res://gun.tscn" id="3_cgsxe"]
+[ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="4_ijpk8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0hr8"]
 radius = 1.272
@@ -52,26 +53,16 @@ collision_layer = 3
 position = Vector2(-0.328947, 0)
 shape = SubResource("CircleShape2D_3yxle")
 
-[node name="StatusLife" type="ProgressBar" parent="."]
-offset_left = -16.9868
-offset_top = -14.6842
-offset_right = 169.013
-offset_bottom = 12.3158
-scale = Vector2(0.184211, 0.184211)
-allow_greater = true
-
 [node name="CooldownHurt" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
 
-[node name="CooldownPowerSpeed" type="Timer" parent="."]
-
-[node name="CooldownPowerDamage" type="Timer" parent="."]
-
-[node name="CooldownPowerSpeedBullet" type="Timer" parent="."]
+[node name="BarLife" parent="." instance=ExtResource("4_ijpk8")]
+offset_left = -16.1184
+offset_top = -18.75
+offset_right = -16.1184
+offset_bottom = -18.75
+scale = Vector2(0.22507, 0.22507)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="CooldownPowerSpeed" to="." method="_on_cooldown_power_speed_timeout"]
-[connection signal="timeout" from="CooldownPowerDamage" to="." method="_on_cooldown_power_damage_timeout"]
-[connection signal="timeout" from="CooldownPowerSpeedBullet" to="." method="_on_cooldown_power_speed_bullet_timeout"]

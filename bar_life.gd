@@ -2,16 +2,11 @@ extends Control
 
 var lifeInterface : float
 
-func initLife(life):
+func upgradeLife(life):
 	$Ghost.value = life
 	$Ghost.max_value = life
 	$Vida.value = life
 	$Vida.max_value = life
-	
-# Regenerate future
-func recLife(life):
-	$Ghost.value = life
-	$Vida.value = life
 
 func hit(life):
 	lifeInterface = life

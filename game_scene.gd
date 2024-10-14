@@ -48,8 +48,7 @@ func difficult_time():
 		spawnTOUCHERmax = 1
 
 func _on_timer_spawm_mobs() -> void:
-	#difficult_time()
-	pass
+	difficult_time()
 
 func gameOver():
 	game_over.show()

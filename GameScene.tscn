@@ -1,11 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkaevt554tmps"]
+[gd_scene load_steps=9 format=3 uid="uid://dkaevt554tmps"]
 
 [ext_resource type="PackedScene" uid="uid://dmtpqkrq1n3wl" path="res://player.tscn" id="1_1rgi8"]
 [ext_resource type="Script" path="res://game_scene.gd" id="1_ubi70"]
 [ext_resource type="Texture2D" uid="uid://cjl3p5lj2mmjq" path="res://Arts/World/Chao.png" id="2_ajweq"]
 [ext_resource type="PackedScene" uid="uid://cawniw1x8sh48" path="res://game_over.tscn" id="5_pmhjn"]
-[ext_resource type="PackedScene" uid="uid://dcwuxp3lqkgrh" path="res://power_up_da.tscn" id="6_icpaf"]
-[ext_resource type="PackedScene" uid="uid://4mdug42i1bo3" path="res://toucher.tscn" id="7_70rc6"]
 [ext_resource type="PackedScene" uid="uid://b67sdiqc5xt3q" path="res://pause_menu.tscn" id="7_o5emr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sg3he"]
@@ -74,17 +72,11 @@ offset_right = -0.328947
 offset_bottom = -3.28947
 
 [node name="SpawnMobs" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 1.2
 autostart = true
 
 [node name="Temporizar" type="Timer" parent="."]
 autostart = true
-
-[node name="PowerUp_DA" parent="." instance=ExtResource("6_icpaf")]
-position = Vector2(-75, 63)
-
-[node name="Toucher" parent="." instance=ExtResource("7_70rc6")]
-position = Vector2(555, 11)
 
 [connection signal="timeout" from="SpawnMobs" to="." method="_on_timer_spawm_mobs"]
 [connection signal="timeout" from="Temporizar" to="." method="_on_temporizar_timeout"]

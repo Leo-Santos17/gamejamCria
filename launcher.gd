@@ -5,14 +5,14 @@ extends CharacterBody2D
 
 const speed = 50
 var time = 0
-var life = 1000
+var life = 10
 const limitDistance = 300
 var hurtDamage = 3
 var is_final = false
 var dano
 
 func _ready() -> void:
-	$BarLife.initLife(life)
+	$BarLife.upgradeLife(life)
 
 func _physics_process(delta: float) -> void:
 	move_mob()
