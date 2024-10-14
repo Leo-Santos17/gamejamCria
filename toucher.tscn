@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://toucher.gd" id="1_wax0y"]
 [ext_resource type="Texture2D" uid="uid://dqcj74ne73pir" path="res://Arts/Monster/Monster.svg" id="2_73182"]
-[ext_resource type="PackedScene" uid="uid://bvjwwd4gw1dn8" path="res://text_damage.tscn" id="3_bk36h"]
+[ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="3_6x5rv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybqfp"]
 
@@ -18,17 +18,17 @@ scale = Vector2(6.76, 6.76)
 shape = SubResource("CircleShape2D_ybqfp")
 
 [node name="StatusLife" type="ProgressBar" parent="."]
+visible = false
 offset_left = -72.0
 offset_top = -103.0
 offset_right = 72.0
 offset_bottom = -76.0
 
-[node name="Dano" parent="StatusLife" instance=ExtResource("3_bk36h")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = -40.0
-offset_bottom = -11.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="BarLife" parent="." instance=ExtResource("3_6x5rv")]
+offset_left = -77.0
+offset_top = -103.0
+offset_right = -77.0
+offset_bottom = -103.0
+
+[node name="Damage" type="Marker2D" parent="."]
+position = Vector2(-77, -101)

@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var scene = get_node("/root/Game/")
 
 # Variáveis Locais
-var life = 10
+var life = 20
 var lifeMax = life
 var is_ready = true
 var is_effected = false
@@ -119,16 +119,14 @@ func HUD(BM, B):
 func dead():
 	if life <= 0:
 		scene.gameOver()
-		
+
 func check_fake_damage():
 	if (randi_range(0,psicoce) == randi_range(0,psicoce)):
 		life -= rateDamage
-		#print("Dano Real")
 		qtdReal += 1
 	else:
 		#print("Dano Fake")
 		qtdFake += 1
-	print("Real: ",qtdReal," | Fake: ",qtdFake)
 
 
 # Timers

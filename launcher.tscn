@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk8w3cbcij1s5"]
+[gd_scene load_steps=6 format=3 uid="uid://dk8w3cbcij1s5"]
 
 [ext_resource type="Script" path="res://launcher.gd" id="1_iocxm"]
 [ext_resource type="Texture2D" uid="uid://dqcj74ne73pir" path="res://Arts/Monster/Monster.svg" id="1_mx54l"]
 [ext_resource type="PackedScene" uid="uid://dwehymbi5jct" path="res://gun_launcher.tscn" id="3_017ve"]
+[ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="4_kh8pr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cbyo"]
 radius = 25.0
@@ -23,6 +24,7 @@ scale = Vector2(0.399999, 0.399999)
 texture = ExtResource("1_mx54l")
 
 [node name="StatusLife" type="ProgressBar" parent="."]
+visible = false
 offset_left = -43.0
 offset_top = -48.0
 offset_right = 90.0
@@ -34,3 +36,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Damage" type="Marker2D" parent="."]
 position = Vector2(-77, -101)
+
+[node name="BarLife" parent="." instance=ExtResource("4_kh8pr")]
+offset_left = -73.0
+offset_top = -65.0
+offset_right = -73.0
+offset_bottom = -65.0

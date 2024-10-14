@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://oyy2e2jdousn"]
+
+[ext_resource type="Script" path="res://bar_life.gd" id="1_5po0v"]
+
+[node name="Life" type="ProgressBar"]
+modulate = Color(7.70092e-07, 0.553295, 0.37491, 1)
+anchors_preset = -1
+anchor_right = 0.081
+anchor_bottom = 0.042
+offset_right = 39.688
+offset_bottom = -0.216002
+grow_horizontal = 2
+grow_vertical = 2
+value = 15.0
+script = ExtResource("1_5po0v")
+
+[node name="Ghost" type="ProgressBar" parent="."]
+self_modulate = Color(0.389269, 0.00370787, 0.386409, 1)
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 27.0
+value = 55.0
+show_percentage = false
+
+[node name="CoolDown" type="Timer" parent="."]

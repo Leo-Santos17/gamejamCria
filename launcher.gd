@@ -5,14 +5,14 @@ extends CharacterBody2D
 
 const speed = 50
 var time = 0
-var life = 3
+var life = 1000
 const limitDistance = 300
-var hurtDamage = 1
+var hurtDamage = 3
 var is_final = false
+var dano
 
 func _ready() -> void:
-	$StatusLife.max_value = life
-	$StatusLife.value = life
+	$BarLife.initLife(life)
 
 func _physics_process(delta: float) -> void:
 	move_mob()
@@ -28,13 +28,12 @@ func checkDistance(distance):
 		move_and_slide()
 
 func take_damage():
-	life-=hurtDamage*player.damageMulti
+	CheckDamageCritic()
+	#Se Critico, Modificar dano
 	status()
 	gen($Damage.global_position)
 	if life<=0:
-		
 		var n = randi_range(1, 20)
-		
 		match n:
 			1: 
 				var powerUpSm = preload("res://power_up_sm.tscn")
@@ -85,13 +84,23 @@ func take_damage():
 		queue_free()
 		
 
+func CheckDamageCritic():
+	match randi_range(1,10):
+		3:
+			dano = hurtDamage*player.damageMulti
+			life-=dano
+			print("Crítico!")
+		_:
+			var ale = randi_range(1, hurtDamage-1)
+			dano = ale*player.damageMulti
+			life-=dano
+
 func status():
-	$StatusLife.value = life
+	$BarLife.hit(life)
 
 
 func gen(dis):
 	var life = preload("res://text_life.tscn")
 	var newLife = life.instantiate()
-	var dano = hurtDamage*player.damageMulti
 	get_parent().add_child(newLife)
 	newLife.is_show(dis, dano)
