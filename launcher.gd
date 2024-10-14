@@ -4,9 +4,11 @@ extends CharacterBody2D
 @onready var launcher = get_node("res://launcher.tscn")
 
 const speed = 50
+var time = 0
 var life = 3
 const limitDistance = 300
 var hurtDamage = 1
+var is_final = false
 
 func _ready() -> void:
 	$StatusLife.max_value = life
@@ -28,6 +30,7 @@ func checkDistance(distance):
 func take_damage():
 	life-=hurtDamage*player.damageMulti
 	status()
+	gen($Damage.global_position)
 	if life<=0:
 		
 		var n = randi_range(1, 20)
@@ -69,9 +72,26 @@ func take_damage():
 				newPower.global_position = locatexMob
 				# Adiciona o objeto à cena para ser exibido
 				get_parent().add_child(newPower)
+			18, 3:
+				var bulletsPower = preload("res://balaPower.tscn")
+				var newPower = bulletsPower.instantiate()
+				# Captura a posição desejada antes de adicionar o novo objeto
+				var locatexMob = global_position
+				# Configura a posição da instância
+				newPower.global_position = locatexMob
+				# Adiciona o objeto à cena para ser exibido
+				get_parent().add_child(newPower)
 		# Eliminar enemy
 		queue_free()
 		
 
 func status():
 	$StatusLife.value = life
+
+
+func gen(dis):
+	var life = preload("res://text_life.tscn")
+	var newLife = life.instantiate()
+	var dano = hurtDamage*player.damageMulti
+	get_parent().add_child(newLife)
+	newLife.is_show(dis, dano)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkpreewi7r7us"]
+
+[ext_resource type="Script" path="res://balaPower.gd" id="1_xvsq0"]
+[ext_resource type="Texture2D" uid="uid://3iiqevn5mo2j" path="res://Arts/Bullet/Ballas.png" id="2_mn00b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6l24b"]
+radius = 17.0294
+
+[node name="Bala" type="Area2D"]
+collision_mask = 2147483648
+script = ExtResource("1_xvsq0")
+
+[node name="Colisao" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6l24b")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_mn00b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

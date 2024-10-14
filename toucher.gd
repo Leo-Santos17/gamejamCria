@@ -28,6 +28,7 @@ func take_damage():
 	#print("Dano em Toucher")
 	life-=hurtDamage*player.damageMulti
 	status()
+	
 	if life<=0:
 		var n = randi_range(1, 20)
 		match n:

@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c11yca41282h5"]
+
+[ext_resource type="Script" path="res://text_life.gd" id="1_ukvfc"]
+
+[node name="TextLife" type="Label"]
+anchors_preset = -1
+anchor_left = -0.19
+anchor_top = -0.253
+anchor_right = -0.19
+anchor_bottom = -0.253
+offset_left = 143.88
+offset_top = 138.944
+offset_right = 296.88
+offset_bottom = 195.944
+theme_override_font_sizes/font_size = 40
+text = "Label"
+horizontal_alignment = 1
+script = ExtResource("1_ukvfc")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -30,3 +30,7 @@ offset_bottom = -21.0
 scale = Vector2(0.64, 0.64)
 max_value = 3.0
 value = 3.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Marker2D" parent="."]
+position = Vector2(-77, -101)

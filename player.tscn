@@ -42,7 +42,6 @@ text = "Text"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
-zoom = Vector2(0.5, 0.5)
 
 [node name="Gun" parent="." instance=ExtResource("3_cgsxe")]
 
@@ -62,12 +61,17 @@ scale = Vector2(0.184211, 0.184211)
 allow_greater = true
 
 [node name="CooldownHurt" type="Timer" parent="."]
-one_shot = true
+wait_time = 1.5
+autostart = true
 
-[node name="CooldownPower" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
+[node name="CooldownPowerSpeed" type="Timer" parent="."]
+
+[node name="CooldownPowerDamage" type="Timer" parent="."]
+
+[node name="CooldownPowerSpeedBullet" type="Timer" parent="."]
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="CooldownPower" to="." method="_on_cooldown_power"]
+[connection signal="timeout" from="CooldownPowerSpeed" to="." method="_on_cooldown_power_speed_timeout"]
+[connection signal="timeout" from="CooldownPowerDamage" to="." method="_on_cooldown_power_damage_timeout"]
+[connection signal="timeout" from="CooldownPowerSpeedBullet" to="." method="_on_cooldown_power_speed_bullet_timeout"]
