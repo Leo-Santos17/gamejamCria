@@ -17,7 +17,7 @@ Faltam sei lá, a jam agora é pro dia 21/10
 
 ## Programação
 ### Movimentação
-* Personagem () | assets
+* Personagem (X) | assets
 * Inimigos() | assets
 	
 ### Física
@@ -40,10 +40,10 @@ Faltam sei lá, a jam agora é pro dia 21/10
 	* +10% aumento do dano da bala(X)
 
 ### hud			
-* Tela de Início()
+* Tela de Início(X)
 * pause(X)
 * Game Over(X)
 * Diálogos()
-* Créditos()
+* Créditos(X)
 	
 		
