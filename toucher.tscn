@@ -1,28 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://4mdug42i1bo3"]
+[gd_scene load_steps=10 format=3 uid="uid://4mdug42i1bo3"]
 
 [ext_resource type="Script" path="res://toucher.gd" id="1_wax0y"]
-[ext_resource type="Texture2D" uid="uid://dqcj74ne73pir" path="res://Arts/Monster/Monster.svg" id="2_73182"]
 [ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="3_6x5rv"]
+[ext_resource type="Texture2D" uid="uid://lb3slhtlnxlt" path="res://assets/touchers/toucher - 01/Touchers - 01.png" id="3_ysbyj"]
+[ext_resource type="AudioStream" uid="uid://0jm47ehkpkbn" path="res://Arts/sounds_effects/tennis-smash-100733.mp3" id="4_vrace"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ybqfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osrbe"]
+atlas = ExtResource("3_ysbyj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrlds"]
+atlas = ExtResource("3_ysbyj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ersbc"]
+atlas = ExtResource("3_ysbyj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujrvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osrbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yrlds")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ersbc")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
 
 [node name="Toucher" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_wax0y")
 
-[node name="Monster" type="Sprite2D" parent="."]
-texture = ExtResource("2_73182")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6.76, 6.76)
 shape = SubResource("CircleShape2D_ybqfp")
-
-[node name="StatusLife" type="ProgressBar" parent="."]
-visible = false
-offset_left = -72.0
-offset_top = -103.0
-offset_right = 72.0
-offset_bottom = -76.0
 
 [node name="BarLife" parent="." instance=ExtResource("3_6x5rv")]
 offset_left = -77.0
@@ -32,3 +57,12 @@ offset_bottom = -103.0
 
 [node name="Damage" type="Marker2D" parent="."]
 position = Vector2(-77, -101)
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.25, 3.25)
+sprite_frames = SubResource("SpriteFrames_ujrvl")
+animation = &"new_animation"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vrace")
+volume_db = -20.0

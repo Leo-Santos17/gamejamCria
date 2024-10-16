@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player = get_node("/root/Game/Player")
+@onready var animation := $anim as AnimatedSprite2D
 
 const speed = 300
 var life = 10
@@ -17,20 +18,30 @@ func _physics_process(delta: float) -> void:
 func moveMob():
 	var direction = global_position.direction_to(player.global_position)
 	var distance = global_position.distance_to(player.global_position)
+	rot(direction.x)
 	velocity = direction*speed
 	checkDistance(distance)
 
 func checkDistance(distance):
 	if distance > limitDistance:
+		animation.play("Walk")
 		move_and_slide()
+
+func rot(x):
+	if x < 0:
+		animation.scale.x = animation.get_transform().get_scale().x * -1
+	if x > 0:
+		animation.scale.x = animation.get_transform().get_scale().x * 1
 
 func take_damage():
 	#print("Dano em Toucher")
+	$Hurt.play()
 	CheckDamageCritic()
 	status()
 	gen($Damage.global_position)
-	
 	if life<=0:
+		player.score(100)
+		audio_death()
 		var n = randi_range(1, 20)
 		match n:
 			1: 
@@ -71,6 +82,14 @@ func take_damage():
 				get_parent().add_child(newPower)
 		# Eliminar enemy
 		queue_free()
+
+@onready var death = preload("res://Arts/sounds_effects/DeadMonster.mp3")
+func audio_death():
+	var sound_player = AudioStreamPlayer2D.new()
+	sound_player.stream = death
+	sound_player.global_position = global_position  # Para tocar na mesma posição do monstro
+	get_parent().add_child(sound_player)
+	sound_player.play()
 
 func status():
 	$BarLife.hit(life)

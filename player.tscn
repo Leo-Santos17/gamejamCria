@@ -1,9 +1,45 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmtpqkrq1n3wl"]
+[gd_scene load_steps=13 format=3 uid="uid://dmtpqkrq1n3wl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ey1tx"]
-[ext_resource type="Texture2D" uid="uid://be0vok6idhv5m" path="res://Arts/Player/PlayerTest.png" id="2_deeyj"]
 [ext_resource type="PackedScene" uid="uid://cs78ctbxhnpfp" path="res://gun.tscn" id="3_cgsxe"]
+[ext_resource type="Texture2D" uid="uid://clwy3qvwe2ymt" path="res://assets/Character/character - walk toward.png" id="4_bi57k"]
 [ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="4_ijpk8"]
+[ext_resource type="AudioStream" uid="uid://ctykpci5pibc6" path="res://Arts/sounds_effects/Hurt_player.mp3" id="5_sibar"]
+[ext_resource type="AudioStream" uid="uid://xx87m7q1xf0d" path="res://Arts/sounds_effects/dead.mp3" id="6_0r4p1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6vuq"]
+atlas = ExtResource("4_bi57k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyeyt"]
+atlas = ExtResource("4_bi57k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da1h7"]
+atlas = ExtResource("4_bi57k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdnps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6vuq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyeyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da1h7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c0hr8"]
 radius = 1.272
@@ -16,30 +52,43 @@ scale = Vector2(3.04, 3.04)
 collision_layer = 2147483649
 script = ExtResource("1_ey1tx")
 
-[node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(2, 4)
-texture = ExtResource("2_deeyj")
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.328947, -0.986842)
+scale = Vector2(0.77097, 0.77097)
+sprite_frames = SubResource("SpriteFrames_hdnps")
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.328947, 0)
 scale = Vector2(5.17211, 5.17211)
 shape = SubResource("CircleShape2D_c0hr8")
 
-[node name="muni" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = 75.0
-offset_right = 20.0
-offset_bottom = 96.0
+[node name="Hud" type="CanvasGroup" parent="."]
 
-[node name="quantAmmo" type="Label" parent="muni"]
+[node name="quantAmmo" type="Label" parent="Hud"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = 1.90789
-offset_top = 1.64473
-offset_right = 41.9079
-offset_bottom = 24.6447
+offset_left = -18.0921
+offset_top = 76.6447
+offset_right = 21.9079
+offset_bottom = 99.6447
 text = "Text"
+
+[node name="psicoce" type="Label" parent="Hud"]
+unique_name_in_owner = true
+offset_left = -175.263
+offset_top = 77.6316
+offset_right = -135.263
+offset_bottom = 103.632
+theme_override_font_sizes/font_size = 18
+text = "1"
+horizontal_alignment = 1
+
+[node name="MetaScore" type="Label" parent="Hud"]
+unique_name_in_owner = true
+offset_left = 147.368
+offset_top = -105.263
+offset_right = 187.368
+offset_bottom = -82.2632
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -63,6 +112,12 @@ offset_top = -18.75
 offset_right = -16.1184
 offset_bottom = -18.75
 scale = Vector2(0.22507, 0.22507)
+
+[node name="getHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sibar")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0r4p1")
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]

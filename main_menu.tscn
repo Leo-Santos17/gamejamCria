@@ -1,0 +1,151 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1teod5vhfm65"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_5rlbj"]
+[ext_resource type="Texture2D" uid="uid://ckc0odxi0ddwd" path="res://Arts/Background/leno brega.jpeg" id="1_l6km4"]
+[ext_resource type="FontFile" uid="uid://bktq5wp8orp5w" path="res://Arts/Fonts/pixeloid-font/PixeloidSansBold-PKnYd.ttf" id="2_fg20k"]
+[ext_resource type="FontFile" uid="uid://dmadx0ca07f2y" path="res://Arts/Fonts/pixeloid-font/PixeloidMono-d94EV.ttf" id="4_3g46p"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acumd"]
+texture = ExtResource("1_l6km4")
+modulate_color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyeaj"]
+bg_color = Color(1, 1, 1, 1)
+shadow_size = 3
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6vuu"]
+content_margin_left = 50.0
+content_margin_top = 2.0
+content_margin_right = 50.0
+content_margin_bottom = 2.0
+bg_color = Color(0.262669, 0.314391, 0.661545, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.670588)
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5rlbj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_acumd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -227.0
+offset_right = 156.5
+offset_bottom = -185.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_fg20k")
+theme_override_font_sizes/font_size = 30
+text = "Cria Adventures"
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = 160.0
+offset_right = 101.5
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3g46p")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
+text = "Começar"
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 163.0
+offset_top = 239.0
+offset_right = 349.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-706.5, -580)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3g46p")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
+text = "OPÇÕES"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = 235.0
+offset_right = 101.5
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3g46p")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
+text = "SAIR
+"
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -362.0
+offset_top = 235.0
+offset_right = -165.0
+offset_bottom = 273.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3g46p")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
+text = "CRÉDITOS"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_start_pressed"]

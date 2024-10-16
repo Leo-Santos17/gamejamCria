@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs78ctbxhnpfp"]
+[gd_scene load_steps=6 format=3 uid="uid://cs78ctbxhnpfp"]
 
 [ext_resource type="Script" path="res://gun.gd" id="1_3s8g7"]
 [ext_resource type="Texture2D" uid="uid://cgn0o5getr05k" path="res://Arts/Gun/SpriteGun.png" id="2_4f1yy"]
+[ext_resource type="AudioStream" uid="uid://dyxfiaw7laocs" path="res://Arts/sounds_effects/shoot.wav" id="3_hvtc8"]
+[ext_resource type="AudioStream" uid="uid://bvlcysxgnw73i" path="res://Arts/sounds_effects/Reload.mp3" id="4_3tcgr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gn5yd"]
 
@@ -25,3 +27,10 @@ texture = ExtResource("2_4f1yy")
 position = Vector2(-7, -2)
 rotation = 3.14159
 scale = Vector2(2.48, -2.48)
+
+[node name="Tiro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hvtc8")
+volume_db = -10.0
+
+[node name="Reload" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3tcgr")

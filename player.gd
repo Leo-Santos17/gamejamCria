@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 # Variáveis de Cena
 @onready var scene = get_node("/root/Game/")
+@onready var animation := $anim as AnimatedSprite2D
 
 # Variáveis Locais
 var is_ready = true
@@ -11,6 +12,7 @@ var time : float = 0
 var psicoce = 1
 var qtdFake: int
 var qtdReal: int
+var pontuacao : int
 
 # Var Abilites
 var life = 10
@@ -42,11 +44,16 @@ func _physics_process(delta):
 # Move
 func move():
 	var direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	velocity = direction*speedMove
-	move_and_slide()
+	if direction.x != 0 or direction.y != 0:
+		velocity = direction*speedMove
+		animation.play("walk")
+		move_and_slide()
+	else:
+		animation.play("idle")
 
 # Dano do Toucher
 func take_damage_py():
+	$getHurt.play()
 	var overlappingMobs = $HurtBox.get_overlapping_bodies().size()
 	life -= rateDamage*overlappingMobs-1
 	status()
@@ -76,6 +83,7 @@ func upStatus():
 
 # Cooldown Hurt
 func checkHurt():
+	
 	var overlappingMobs = $HurtBox.get_overlapping_bodies()
 	if overlappingMobs.size() > 1:
 		if is_ready:
@@ -87,18 +95,27 @@ func checkHurt():
 func HUD(BM, B):
 	hudAmmo = str(BM)+"/"+str(B)
 	%quantAmmo.text = hudAmmo
+	%psicoce.text = str(psicoce)
+	%MetaScore.text = str(pontuacao)
 
 # Checks Death
 func dead():
 	if life <= 0:
+		$Death.play()
 		scene.gameOver()
 
 func check_fake_damage():
+	$getHurt.play()
 	if (randi_range(0,psicoce) == randi_range(0,psicoce)):
 		life -= rateDamage
 		qtdReal += 1
 	else:
 		qtdFake += 1
+
+func score(x):
+	pontuacao += x
+	pass
+
 
 # Timers
 func _on_timer_timeout() -> void:

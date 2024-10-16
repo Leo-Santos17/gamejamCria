@@ -49,18 +49,22 @@ func difficult_time():
 
 func _on_timer_spawm_mobs() -> void:
 	difficult_time()
+	pass
 
 func gameOver():
 	game_over.show()
+	paused = true
 	Engine.time_scale = 0
 
 func pauseMenu():
 	if paused:
 		pause_menu.hide()
 		Engine.time_scale = 1
+		$Back.stream_paused = false
 	else:
 		pause_menu.show()
 		Engine.time_scale = 0
+		$Back.stream_paused = true
 	
 	paused = !paused
 

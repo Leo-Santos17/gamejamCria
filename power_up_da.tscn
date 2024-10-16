@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcwuxp3lqkgrh"]
+[gd_scene load_steps=5 format=3 uid="uid://dcwuxp3lqkgrh"]
 
 [ext_resource type="Script" path="res://power_up_da.gd" id="1_8bgnf"]
 [ext_resource type="Texture2D" uid="uid://c17lyhnkmy8le" path="res://Arts/PowerUps/powerUp-DA.png" id="2_pmy1p"]
+[ext_resource type="AudioStream" uid="uid://jbhpkjxpexpv" path="res://Arts/sounds_effects/buble.mp3" id="3_rydqo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teqt6"]
 radius = 17.0294
@@ -18,6 +19,9 @@ shape = SubResource("CircleShape2D_teqt6")
 texture = ExtResource("2_pmy1p")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rydqo")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
