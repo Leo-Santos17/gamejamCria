@@ -2,11 +2,12 @@ extends Node2D
 
 @onready var pause_menu = $Player/PauseMenu
 @onready var game_over = $Player/GameOver
+@onready var Player = $Player
 
 # Variáveis
 var paused = false
 
-var tempo : int = 0
+var tempo : int = 240
 var mess = str(tempo)
 var spawnLAUNCHERmax = 10
 var spawnTOUCHERmax = 10
@@ -18,34 +19,37 @@ func _process(delta: float) -> void:
 
 
 func _on_temporizar_timeout() -> void:
-	tempo += 1
+	tempo -= 1
 	mess = str(tempo)
 	%Temporizador.text = mess
 	check_stop()
 	
 
 func check_stop():
-	if tempo >= 240:
+	if tempo <= 0:
 		$Temporizar.stop()
 		print("Parou")
 
 func difficult_time():
-	if tempo<30:
+	if tempo>170:
 		spawnTOUCHERmax = 5
 		spawn_mob_toucher()
-	elif tempo<75:
+	elif tempo>110:
 		spawnTOUCHERmax = 3
 		spawnLAUNCHERmax = 5
 		spawn_mob_launcher()
 		spawn_mob_toucher()
-	elif tempo<110:
+		Player.psicoce = 4
+	elif tempo>75:
 		spawnTOUCHERmax = 4
 		spawnLAUNCHERmax = 4
 		spawn_mob_launcher()
 		spawn_mob_toucher()
-	elif tempo<170:
+		Player.psicoce = 3
+	elif tempo>30:
 		spawnLAUNCHERmax = 1
 		spawnTOUCHERmax = 1
+		Player.psicoce = 2
 
 func _on_timer_spawm_mobs() -> void:
 	difficult_time()

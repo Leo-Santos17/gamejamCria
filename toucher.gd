@@ -41,9 +41,51 @@ func take_damage():
 	gen($Damage.global_position)
 	if life<=0:
 		player.score(100)
+		vampMode()
 		audio_death()
 		var n = randi_range(1, 20)
-		match n:
+		dropItem(n)
+		# Eliminar enemy
+		queue_free()
+
+@onready var death = preload("res://Arts/sounds_effects/DeadMonster.mp3")
+func audio_death():
+	var sound_player = AudioStreamPlayer2D.new()
+	sound_player.stream = death
+	sound_player.global_position = global_position  # Para tocar na mesma posição do monstro
+	get_parent().add_child(sound_player)
+	sound_player.play()
+
+func status():
+	$BarLife.hit(life)
+
+func CheckDamageCritic():
+	match randi_range(1,10):
+		3:
+			dano = hurtDamage*player.damageMulti
+			life-=dano
+			print("Crítico!")
+		_:
+			var ale = randi_range(1, hurtDamage-1)
+			dano = ale*player.damageMulti
+			life-=dano
+
+func gen(dis):
+	var life = preload("res://text_life.tscn")
+	var newLife = life.instantiate()
+	get_parent().add_child(newLife)
+	newLife.is_show(dis, dano)
+
+func vampMode():
+	if player.vampMode:
+		var rando = randi_range(1,player.lifeMax-player.life)
+		if rando > player.lifeMax - player.life:
+			player.life = player.lifeMax - player.life
+		else:
+			player.life = rando
+
+func dropItem(n):
+	match n:
 			1: 
 				var powerUpSm = preload("res://power_up_sm.tscn")
 				var newPower = powerUpSm.instantiate()
@@ -80,33 +122,3 @@ func take_damage():
 				newPower.global_position = locatexMob
 				# Adiciona o objeto à cena para ser exibido
 				get_parent().add_child(newPower)
-		# Eliminar enemy
-		queue_free()
-
-@onready var death = preload("res://Arts/sounds_effects/DeadMonster.mp3")
-func audio_death():
-	var sound_player = AudioStreamPlayer2D.new()
-	sound_player.stream = death
-	sound_player.global_position = global_position  # Para tocar na mesma posição do monstro
-	get_parent().add_child(sound_player)
-	sound_player.play()
-
-func status():
-	$BarLife.hit(life)
-
-func CheckDamageCritic():
-	match randi_range(1,10):
-		3:
-			dano = hurtDamage*player.damageMulti
-			life-=dano
-			print("Crítico!")
-		_:
-			var ale = randi_range(1, hurtDamage-1)
-			dano = ale*player.damageMulti
-			life-=dano
-
-func gen(dis):
-	var life = preload("res://text_life.tscn")
-	var newLife = life.instantiate()
-	get_parent().add_child(newLife)
-	newLife.is_show(dis, dano)

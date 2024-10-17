@@ -45,54 +45,10 @@ func take_damage():
 	status()
 	gen($Damage.global_position)
 	if life<=0:
+		vampMode()
 		player.score(400)
 		var n = randi_range(1, 20)
-		match n:
-			1: 
-				var powerUpSm = preload("res://power_up_sm.tscn")
-				var newPower = powerUpSm.instantiate()
-				# Captura a posição desejada antes de adicionar o novo objeto
-				var locatexMob = global_position
-				# Configura a posição da instância
-				newPower.global_position = locatexMob
-				# Adiciona o objeto à cena para ser exibido
-				get_parent().add_child(newPower)
-			5: 
-				var powerUpDs = preload("res://power_up_ds.tscn")
-				var newPower = powerUpDs.instantiate()
-				# Captura a posição desejada antes de adicionar o novo objeto
-				var locatexMob = global_position
-				# Configura a posição da instância
-				newPower.global_position = locatexMob
-				# Adiciona o objeto à cena para ser exibido
-				get_parent().add_child(newPower)
-			12:
-				var powerUpDa = preload("res://power_up_da.tscn")
-				var newPower = powerUpDa.instantiate()
-				# Captura a posição desejada antes de adicionar o novo objeto
-				var locatexMob = global_position
-				# Configura a posição da instância
-				newPower.global_position = locatexMob
-				# Adiciona o objeto à cena para ser exibido
-				get_parent().add_child(newPower)
-			14:
-				var powerUpHealth = preload("res://power_up_Health.tscn")
-				var newPower = powerUpHealth.instantiate()
-				# Captura a posição desejada antes de adicionar o novo objeto
-				var locatexMob = global_position
-				# Configura a posição da instância
-				newPower.global_position = locatexMob
-				# Adiciona o objeto à cena para ser exibido
-				get_parent().add_child(newPower)
-			18, 3:
-				var bulletsPower = preload("res://balaPower.tscn")
-				var newPower = bulletsPower.instantiate()
-				# Captura a posição desejada antes de adicionar o novo objeto
-				var locatexMob = global_position
-				# Configura a posição da instância
-				newPower.global_position = locatexMob
-				# Adiciona o objeto à cena para ser exibido
-				get_parent().add_child(newPower)
+		dropItem(n)
 		# Eliminar enemy
 		queue_free()
 
@@ -124,3 +80,59 @@ func gen(dis):
 	var newLife = life.instantiate()
 	get_parent().add_child(newLife)
 	newLife.is_show(dis, dano)
+
+func vampMode():
+	if player.vampMode:
+		var rando = randi_range(1,player.lifeMax-player.life)
+		if rando > player.lifeMax - player.life:
+			player.life = player.lifeMax - player.life
+		else:
+			player.life = rando
+
+func dropItem(n):
+	match n:
+		1: 
+			var powerUpSm = preload("res://power_up_sm.tscn")
+			var newPower = powerUpSm.instantiate()
+			# Captura a posição desejada antes de adicionar o novo objeto
+			var locatexMob = global_position
+			# Configura a posição da instância
+			newPower.global_position = locatexMob
+			# Adiciona o objeto à cena para ser exibido
+			get_parent().add_child(newPower)
+		5: 
+			var powerUpDs = preload("res://power_up_ds.tscn")
+			var newPower = powerUpDs.instantiate()
+			# Captura a posição desejada antes de adicionar o novo objeto
+			var locatexMob = global_position
+			# Configura a posição da instância
+			newPower.global_position = locatexMob
+			# Adiciona o objeto à cena para ser exibido
+			get_parent().add_child(newPower)
+		12:
+			var powerUpDa = preload("res://power_up_da.tscn")
+			var newPower = powerUpDa.instantiate()
+			# Captura a posição desejada antes de adicionar o novo objeto
+			var locatexMob = global_position
+			# Configura a posição da instância
+			newPower.global_position = locatexMob
+			# Adiciona o objeto à cena para ser exibido
+			get_parent().add_child(newPower)
+		14:
+			var powerUpHealth = preload("res://power_up_Health.tscn")
+			var newPower = powerUpHealth.instantiate()
+			# Captura a posição desejada antes de adicionar o novo objeto
+			var locatexMob = global_position
+			# Configura a posição da instância
+			newPower.global_position = locatexMob
+			# Adiciona o objeto à cena para ser exibido
+			get_parent().add_child(newPower)
+		18, 3:
+			var bulletsPower = preload("res://balaPower.tscn")
+			var newPower = bulletsPower.instantiate()
+			# Captura a posição desejada antes de adicionar o novo objeto
+			var locatexMob = global_position
+			# Configura a posição da instância
+			newPower.global_position = locatexMob
+			# Adiciona o objeto à cena para ser exibido
+			get_parent().add_child(newPower)

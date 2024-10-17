@@ -45,5 +45,3 @@ Faltam sei lá, a jam agora é pro dia 21/10
 * Game Over(X)
 * Diálogos()
 * Créditos(X)
-	
-		

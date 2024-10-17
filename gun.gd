@@ -3,14 +3,15 @@ extends Area2D
 # Variáveis de cena
 @onready var pointShot = $Centro/SpriteGun/ShotingPoint
 @onready var player = get_node("/root/Game/Player")
+@onready var reloaaa = get_node("/root/Game/Player/WarnReload")
 @onready var Game = get_node("/root/Game")
 @onready var animation = get_node("/root/Game/Player/anim")
 
 # Variáveis Locais
 var arma
-var bullets = 6
+var bullets = 3
 const bullets_MAX : int = 20
-var stockBullets : int = 200
+var stockBullets : int = 21
 var speedBullet : float = 400
 var speedPlayer : float
 
@@ -52,7 +53,7 @@ func checkShoot():
 			# Aviso de balas acabando
 			shoot()
 		else:
-			print("Recarregue, Aperte 'R'") # Mostrar na tela E após pressionar, recarregar lentamente (0,5s)
+			reloaaa.visible = true # Mostrar na tela E após pressionar, recarregar lentamente (0,5s)
 
 func shoot() -> void:
 	bullets-=1
@@ -71,11 +72,20 @@ func shoot() -> void:
 	player.HUD(stockBullets, bullets)
 
 func reload():
-	$Reload.play()
-	if stockBullets > 0:
+	if stockBullets > bullets_MAX:
 		stockBullets = stockBullets-(bullets-bullets_MAX)*-1
 		bullets = bullets_MAX
 		player.HUD(stockBullets, bullets)
+		reloaaa.visible = false
+		$Reload.play()
+	elif stockBullets <= 0:
+		reloaaa.visible = true
+	elif stockBullets < bullets_MAX:
+		bullets += stockBullets
+		stockBullets = 0
+		player.HUD(stockBullets, bullets)
+		reloaaa.visible = false
+		$Reload.play()
 
 func addBullets(x):
 	stockBullets += x

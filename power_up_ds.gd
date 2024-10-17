@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var player = get_node("/root/Game/Player")
+@onready var HUD = get_node("/root/Game/Player/HUD_Power/Adapte/SpeedBala")
 var time : float
 var rate = 1.5
 
@@ -12,19 +13,25 @@ func end_effect():
 	get_parent().add_child(sound_player)
 	sound_player.play()
 
+func _on_timer_timeout() -> void:
+	time += $Timer.wait_time
+	HUD.get_child(1).value = time
+	if time >= 5:
+		$Timer.stop()
+		end_effect()
+		time = 0
+		player.speedShoot = player.speedShootF
+		player.DS = 0
+		HUD.visible = false
+		queue_free()
+
 func _on_body_entered(body: Node2D) -> void:
+	player.DS += 1
 	$effect.play()
 	time = 0
 	player.speedShoot *= rate
 	$CollisionShape2D.queue_free()
 	$Timer.start()
+	HUD.visible = true
+	HUD.get_child(0).text = str(player.DS,"X")
 	visible = false
-
-func _on_timer_timeout() -> void:
-	time += $Timer.wait_time
-	if time >= 5:
-		end_effect()
-		$Timer.stop()
-		time = 0
-		player.speedShoot = player.speedShootF
-		queue_free()

@@ -9,10 +9,16 @@ var is_ready = true
 var rateDamage = 1
 var hudAmmo : String
 var time : float = 0
-var psicoce = 1
+var psicoce = 5
 var qtdFake: int
 var qtdReal: int
 var pontuacao : int
+var DA = 0
+var DS = 0
+var MS = 0
+
+var vampMode = false
+var deadV = false
 
 # Var Abilites
 var life = 10
@@ -34,12 +40,12 @@ func _ready() :
 	speedMoveF = speedMove
 	speedShootF = speedShoot
 	damageMultiF = damageMulti
-	
-	
 
 func _physics_process(delta):
-	move()
-	checkHurt()
+	if !deadV:
+		move()
+		checkHurt()
+		updateHUD()
 
 # Move
 func move():
@@ -96,11 +102,17 @@ func HUD(BM, B):
 	hudAmmo = str(BM)+"/"+str(B)
 	%quantAmmo.text = hudAmmo
 	%psicoce.text = str(psicoce)
+	%psicoce/Teste.value = psicoce
+	%MetaScore.text = str(pontuacao)
+func updateHUD():
+	%psicoce.text = str(psicoce)
+	%psicoce/Teste.value = psicoce
 	%MetaScore.text = str(pontuacao)
 
 # Checks Death
 func dead():
 	if life <= 0:
+		deadV = true
 		$Death.play()
 		scene.gameOver()
 
@@ -115,6 +127,7 @@ func check_fake_damage():
 func score(x):
 	pontuacao += x
 	pass
+	
 
 
 # Timers

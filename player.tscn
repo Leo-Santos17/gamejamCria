@@ -1,11 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmtpqkrq1n3wl"]
+[gd_scene load_steps=16 format=3 uid="uid://dmtpqkrq1n3wl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ey1tx"]
 [ext_resource type="PackedScene" uid="uid://cs78ctbxhnpfp" path="res://gun.tscn" id="3_cgsxe"]
+[ext_resource type="Texture2D" uid="uid://3q5tfkvitycm" path="res://Arts/Background/psiStatus.png" id="3_v1rn8"]
 [ext_resource type="Texture2D" uid="uid://clwy3qvwe2ymt" path="res://assets/Character/character - walk toward.png" id="4_bi57k"]
 [ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="4_ijpk8"]
 [ext_resource type="AudioStream" uid="uid://ctykpci5pibc6" path="res://Arts/sounds_effects/Hurt_player.mp3" id="5_sibar"]
 [ext_resource type="AudioStream" uid="uid://xx87m7q1xf0d" path="res://Arts/sounds_effects/dead.mp3" id="6_0r4p1"]
+[ext_resource type="PackedScene" uid="uid://dnuowxjtt2nsc" path="res://warn_reload.tscn" id="8_yv2xl"]
+[ext_resource type="PackedScene" uid="uid://bac2tfop447d0" path="res://hud_power.tscn" id="9_5co4d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6vuq"]
 atlas = ExtResource("4_bi57k")
@@ -65,6 +68,27 @@ shape = SubResource("CircleShape2D_c0hr8")
 
 [node name="Hud" type="CanvasGroup" parent="."]
 
+[node name="psicoce" type="Label" parent="Hud"]
+unique_name_in_owner = true
+offset_left = -195.724
+offset_top = 78.2895
+offset_right = -155.724
+offset_bottom = 104.29
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "3"
+horizontal_alignment = 1
+
+[node name="Teste" type="TextureProgressBar" parent="Hud/psicoce"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 1.31579
+offset_right = 97.0
+offset_bottom = 25.3158
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource("3_v1rn8")
+
 [node name="quantAmmo" type="Label" parent="Hud"]
 unique_name_in_owner = true
 offset_left = -18.0921
@@ -73,22 +97,13 @@ offset_right = 21.9079
 offset_bottom = 99.6447
 text = "Text"
 
-[node name="psicoce" type="Label" parent="Hud"]
-unique_name_in_owner = true
-offset_left = -175.263
-offset_top = 77.6316
-offset_right = -135.263
-offset_bottom = 103.632
-theme_override_font_sizes/font_size = 18
-text = "1"
-horizontal_alignment = 1
-
 [node name="MetaScore" type="Label" parent="Hud"]
 unique_name_in_owner = true
 offset_left = 147.368
 offset_top = -105.263
 offset_right = 187.368
 offset_bottom = -82.2632
+text = "1"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
@@ -118,6 +133,20 @@ stream = ExtResource("5_sibar")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0r4p1")
+
+[node name="WarnReload" parent="." instance=ExtResource("8_yv2xl")]
+offset_left = -27.6316
+offset_top = -49.0132
+offset_right = -27.6316
+offset_bottom = -49.0132
+scale = Vector2(0.565789, 0.565789)
+
+[node name="HUD_Power" parent="." instance=ExtResource("9_5co4d")]
+offset_left = -180.263
+offset_top = -99.6711
+offset_right = -180.263
+offset_bottom = -99.6711
+scale = Vector2(0.552632, 0.552632)
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]
