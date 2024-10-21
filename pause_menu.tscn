@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b67sdiqc5xt3q"]
+[gd_scene load_steps=8 format=3 uid="uid://b67sdiqc5xt3q"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_1rsox"]
+[ext_resource type="Texture2D" uid="uid://bjnjljw068w0m" path="res://Arts/Binds/BindMove.png" id="2_n2ssw"]
+[ext_resource type="Texture2D" uid="uid://cmg6kxxg7bddt" path="res://Arts/Binds/mouseImg.png" id="3_ry6yk"]
+[ext_resource type="Texture2D" uid="uid://dx1yy0edotlm3" path="res://Arts/Binds/ESC.png" id="4_ofyq4"]
+[ext_resource type="Texture2D" uid="uid://bjcyxj8tlhv3h" path="res://Arts/Background/arrow.png" id="5_7j80o"]
+[ext_resource type="Texture2D" uid="uid://ciedgaoruknsj" path="res://Arts/Background/pressed_arrow.png" id="6_4mn5d"]
+[ext_resource type="Texture2D" uid="uid://bmhsjki765pi5" path="res://Arts/Background/arrow_hover.png" id="7_dbmiq"]
 
 [node name="PauseMenu" type="Control"]
-visible = false
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -24,6 +29,7 @@ grow_vertical = 2
 color = Color(0.105882, 0.105882, 0.105882, 0.376471)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 102.0
 offset_bottom = 66.0
@@ -34,11 +40,107 @@ layout_mode = 2
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Resume"
+text = "Continuar"
+
+[node name="Restart" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Controles"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
+text = "Sair"
+
+[node name="Controls" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = -109.0
+offset_top = -1.0
+offset_right = 175.0
+offset_bottom = 66.0
+color = Color(0, 0, 0, 0.521569)
+
+[node name="Label" type="Label" parent="Controls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = 7.5
+offset_right = 52.0
+offset_bottom = 30.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Andar"
+
+[node name="TextureRect" type="TextureRect" parent="Controls/Label"]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 40.0
+offset_bottom = 4.0
+texture = ExtResource("2_n2ssw")
+
+[node name="Label2" type="Label" parent="Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.5
+offset_top = 7.5
+offset_right = 22.5
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Atirar"
+
+[node name="TextureRect" type="TextureRect" parent="Controls/Label2"]
+layout_mode = 0
+offset_top = -36.0
+offset_right = 40.0
+offset_bottom = 4.0
+texture = ExtResource("3_ry6yk")
+
+[node name="Label3" type="Label" parent="Controls"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = 7.5
+offset_bottom = 30.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Pausar"
+
+[node name="TextureRect" type="TextureRect" parent="Controls/Label3"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -33.0
+offset_right = 37.0
+offset_bottom = -5.0
+texture = ExtResource("4_ofyq4")
+
+[node name="TextureButton" type="TextureButton" parent="Controls"]
+offset_left = 128.0
+offset_top = -24.0
+offset_right = 160.0
+offset_bottom = 7.99999
+scale = Vector2(0.633163, 0.633163)
+texture_normal = ExtResource("5_7j80o")
+texture_pressed = ExtResource("6_4mn5d")
+texture_hover = ExtResource("7_dbmiq")
+flip_h = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Controls/TextureButton" to="." method="_on_back_pressed"]

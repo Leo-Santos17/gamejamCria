@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0mtqqaog2dga"]
+[gd_scene load_steps=8 format=3 uid="uid://b0mtqqaog2dga"]
 
 [ext_resource type="Script" path="res://credits.gd" id="1_0xt5l"]
+[ext_resource type="Texture2D" uid="uid://cc0jw3jrf4vcn" path="res://Arts/Background/New Piskel-1.png (2).png" id="2_ffv6g"]
+[ext_resource type="Texture2D" uid="uid://bjcyxj8tlhv3h" path="res://Arts/Background/arrow.png" id="3_uham5"]
+[ext_resource type="FontFile" uid="uid://6imu1fghu52x" path="res://Arts/Fonts/pixeloid-font/PixeloidMono-d94EV.ttf" id="3_x7hc6"]
+[ext_resource type="Texture2D" uid="uid://ciedgaoruknsj" path="res://Arts/Background/pressed_arrow.png" id="4_vhbce"]
+[ext_resource type="Texture2D" uid="uid://bmhsjki765pi5" path="res://Arts/Background/arrow_hover.png" id="5_vquju"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6w7mo"]
+texture = ExtResource("2_ffv6g")
+modulate_color = Color(0.454524, 0.454524, 0.454524, 1)
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -11,29 +20,70 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0xt5l")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_6w7mo")
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 49.0
+offset_top = 37.0
+offset_right = 81.0
+offset_bottom = 69.0
+scale = Vector2(2.02251, 2.02251)
+texture_normal = ExtResource("3_uham5")
+texture_pressed = ExtResource("4_vhbce")
+texture_hover = ExtResource("5_vquju")
+flip_h = true
+
+[node name="Programer" type="Label" parent="."]
 layout_mode = 0
-offset_left = 580.0
-offset_top = 297.0
-offset_right = 622.0
-offset_bottom = 320.0
-text = "Teste"
+offset_left = 140.0
+offset_top = 53.0
+offset_right = 668.0
+offset_bottom = 578.0
+theme_override_fonts/font = ExtResource("3_x7hc6")
+theme_override_font_sizes/font_size = 18
+text = "Efeitos sonoros: Ender (obtidos via Pixabay)
 
-[node name="Back" type="Button" parent="."]
+Músicas: Ender (criada com Suno AI)
+
+Sprites: 
+   Personagem e monstros: Progma
+   Boss: Ender
+
+Programação: Ender
+Auxílio para Lógica: ChatGPT
+
+Design do Menu: Ender
+
+Lore: Progma e Ender
+
+Trabalho criativo: Ender, Progma e (anônimo)
+
+Testadores: Ender
+
+Engine: Godot Engine"
+uppercase = true
+
+[node name="Programer2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 141.0
-offset_bottom = 91.0
-theme_override_font_sizes/font_size = 40
-text = "<"
+offset_left = 686.0
+offset_top = 55.0
+offset_right = 1145.0
+offset_bottom = 580.0
+theme_override_fonts/font = ExtResource("3_x7hc6")
+theme_override_font_sizes/font_size = 18
+text = "detalhes:
+Esse é o meu primeiro jogo como todo e também, primeira experiência do progma com isso também, o jogo poderia ter saído melhor se não fosse alguns imprevistos que o progma passou e que acabei fazendo parte que era dele (Arte e Músicas). então acabou que nos ultimos 2 dias, fiquei fazendo tanto a parte da arte à pressa, mesmo faltando parte da programação e não quero deixar essa sessão como parte de desculpa, mas a agradecer pela oportunidade de participar, conhecido pessoas incríveis no server e ter dedicado meu tempo nesse jogo foi bem divertido o processo. Tenha uma boa Gameplay
 
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+Ass: Ender
+"
+autowrap_mode = 2
+uppercase = true
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_back_pressed"]

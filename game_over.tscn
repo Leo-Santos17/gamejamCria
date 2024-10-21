@@ -1,36 +1,26 @@
-[gd_scene format=3 uid="uid://cawniw1x8sh48"]
+[gd_scene load_steps=2 format=3 uid="uid://cawniw1x8sh48"]
+
+[ext_resource type="Script" path="res://game_over.gd" id="1_ivae4"]
 
 [node name="GameOver" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ivae4")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.14902)
+layout_mode = 0
+offset_left = -1078.0
+offset_top = -404.0
+offset_right = -1038.0
+offset_bottom = -364.0
+scale = Vector2(62.4098, 28.1949)
+color = Color(0.133333, 0.133333, 0.133333, 0.729412)
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -70.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.144206, 0.101177, 0.178834, 1)
-
-[node name="Label" type="Label" parent="ColorRect/ColorRect"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -41,6 +31,27 @@ offset_bottom = 47.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 69
-text = "Foram as alucinações?"
+text = "Tente Novamente"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -302.0
+offset_top = 96.0
+offset_right = -93.0
+offset_bottom = 171.0
+theme_override_font_sizes/font_size = 48
+text = "Reiniciar
+"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 102.0
+offset_top = 98.0
+offset_right = 311.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 48
+text = "Menu"
+
+[connection signal="pressed" from="Button" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_menu_pressed"]

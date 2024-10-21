@@ -9,15 +9,13 @@ extends Area2D
 
 # Variáveis Locais
 var arma
-var bullets = 3
-const bullets_MAX : int = 20
-var stockBullets : int = 21
+var stockBullets : int = 400
 var speedBullet : float = 400
 var speedPlayer : float
 
 # Operantes
 func _ready() -> void:
-	player.HUD(stockBullets, bullets)
+	player.HUD(stockBullets)
 
 func _physics_process(delta: float) -> void:
 	if !Game.paused:
@@ -41,22 +39,15 @@ func mirar():
 func checkBinds():
 	if Input.is_action_just_pressed("shoot"):
 		checkShoot()
-		
-	if Input.is_action_just_pressed("reload"):
-		reload()
 
 func checkShoot():
 	if Game.paused == false:
-		if bullets > 3:
-			shoot()
-		elif bullets > 0:
-			# Aviso de balas acabando
+		if stockBullets > 0:
 			shoot()
 		else:
 			reloaaa.visible = true # Mostrar na tela E após pressionar, recarregar lentamente (0,5s)
 
 func shoot() -> void:
-	bullets-=1
 	const BULLET = preload("res://Bullet.tscn")
 	speedPlayer = player.speedMove
 	var newBULLET = BULLET.instantiate()
@@ -69,24 +60,13 @@ func shoot() -> void:
 	newBULLET.global_rotation = pointShot.global_rotation
 	pointShot.add_child(newBULLET)
 	$Tiro.play()
-	player.HUD(stockBullets, bullets)
+	stockBullets -= 1
+	player.HUD(stockBullets)
 
 func reload():
-	if stockBullets > bullets_MAX:
-		stockBullets = stockBullets-(bullets-bullets_MAX)*-1
-		bullets = bullets_MAX
-		player.HUD(stockBullets, bullets)
-		reloaaa.visible = false
-		$Reload.play()
-	elif stockBullets <= 0:
+	if stockBullets <= 0:
 		reloaaa.visible = true
-	elif stockBullets < bullets_MAX:
-		bullets += stockBullets
-		stockBullets = 0
-		player.HUD(stockBullets, bullets)
-		reloaaa.visible = false
-		$Reload.play()
 
 func addBullets(x):
 	stockBullets += x
-	player.HUD(stockBullets, bullets)
+	player.HUD(stockBullets)

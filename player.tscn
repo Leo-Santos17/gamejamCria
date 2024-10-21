@@ -1,14 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmtpqkrq1n3wl"]
+[gd_scene load_steps=24 format=3 uid="uid://dmtpqkrq1n3wl"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_ey1tx"]
 [ext_resource type="PackedScene" uid="uid://cs78ctbxhnpfp" path="res://gun.tscn" id="3_cgsxe"]
+[ext_resource type="FontFile" uid="uid://6imu1fghu52x" path="res://Arts/Fonts/pixeloid-font/PixeloidMono-d94EV.ttf" id="3_ukc3a"]
 [ext_resource type="Texture2D" uid="uid://3q5tfkvitycm" path="res://Arts/Background/psiStatus.png" id="3_v1rn8"]
 [ext_resource type="Texture2D" uid="uid://clwy3qvwe2ymt" path="res://assets/Character/character - walk toward.png" id="4_bi57k"]
 [ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="4_ijpk8"]
+[ext_resource type="FontFile" uid="uid://csjylw4view7" path="res://Arts/Fonts/press-start-2p-font/PressStart2P-vaV7.ttf" id="5_l6b67"]
 [ext_resource type="AudioStream" uid="uid://ctykpci5pibc6" path="res://Arts/sounds_effects/Hurt_player.mp3" id="5_sibar"]
+[ext_resource type="FontFile" uid="uid://qhbc17uxbdg" path="res://Arts/Fonts/pixeloid-font/PixeloidSans-mLxMm.ttf" id="5_wxrnq"]
 [ext_resource type="AudioStream" uid="uid://xx87m7q1xf0d" path="res://Arts/sounds_effects/dead.mp3" id="6_0r4p1"]
+[ext_resource type="FontFile" uid="uid://b8pag6x3o0i88" path="res://Arts/Fonts/pixeloid-font/PixeloidSansBold-PKnYd.ttf" id="6_663ew"]
 [ext_resource type="PackedScene" uid="uid://dnuowxjtt2nsc" path="res://warn_reload.tscn" id="8_yv2xl"]
 [ext_resource type="PackedScene" uid="uid://bac2tfop447d0" path="res://hud_power.tscn" id="9_5co4d"]
+[ext_resource type="Texture2D" uid="uid://c315ohpvqb1wq" path="res://Arts/Bullet/Bala.png" id="11_gnxc6"]
+[ext_resource type="FontFile" uid="uid://cpad1ilw8j0p5" path="res://Arts/Fonts/pixelon-font/Pixelon-E4JEg.otf" id="12_mo3v2"]
+[ext_resource type="PackedScene" uid="uid://bhslq47ofg4lv" path="res://select_power.tscn" id="13_11gig"]
+[ext_resource type="PackedScene" uid="uid://4vfnt8icgu07" path="res://warnings.tscn" id="14_yqbiq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x6vuq"]
 atlas = ExtResource("4_bi57k")
@@ -66,45 +74,6 @@ position = Vector2(0.328947, 0)
 scale = Vector2(5.17211, 5.17211)
 shape = SubResource("CircleShape2D_c0hr8")
 
-[node name="Hud" type="CanvasGroup" parent="."]
-
-[node name="psicoce" type="Label" parent="Hud"]
-unique_name_in_owner = true
-offset_left = -195.724
-offset_top = 78.2895
-offset_right = -155.724
-offset_bottom = 104.29
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 18
-text = "3"
-horizontal_alignment = 1
-
-[node name="Teste" type="TextureProgressBar" parent="Hud/psicoce"]
-layout_mode = 0
-offset_left = 25.0
-offset_top = 1.31579
-offset_right = 97.0
-offset_bottom = 25.3158
-max_value = 5.0
-value = 5.0
-texture_progress = ExtResource("3_v1rn8")
-
-[node name="quantAmmo" type="Label" parent="Hud"]
-unique_name_in_owner = true
-offset_left = -18.0921
-offset_top = 76.6447
-offset_right = 21.9079
-offset_bottom = 99.6447
-text = "Text"
-
-[node name="MetaScore" type="Label" parent="Hud"]
-unique_name_in_owner = true
-offset_left = 147.368
-offset_top = -105.263
-offset_right = 187.368
-offset_bottom = -82.2632
-text = "1"
-
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(2, 2)
 
@@ -134,6 +103,95 @@ stream = ExtResource("5_sibar")
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0r4p1")
 
+[node name="Hud" type="CanvasGroup" parent="."]
+
+[node name="psicc" type="ColorRect" parent="Hud"]
+offset_left = -185.0
+offset_top = 60.6316
+offset_right = -94.0
+offset_bottom = 103.632
+color = Color(0, 0, 0, 0.188235)
+
+[node name="psicoce" type="Label" parent="Hud"]
+unique_name_in_owner = true
+offset_left = -195.066
+offset_top = 80.2632
+offset_right = -155.066
+offset_bottom = 106.264
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ukc3a")
+theme_override_font_sizes/font_size = 18
+text = "3"
+horizontal_alignment = 1
+
+[node name="Teste" type="TextureProgressBar" parent="Hud/psicoce"]
+layout_mode = 0
+offset_left = 26.6447
+offset_top = -1.31579
+offset_right = 98.6447
+offset_bottom = 22.6842
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource("3_v1rn8")
+
+[node name="Label" type="Label" parent="Hud/psicoce"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 22.0395
+offset_top = -15.4605
+offset_right = 92.0395
+offset_bottom = 7.53947
+theme_override_fonts/font = ExtResource("5_l6b67")
+theme_override_font_sizes/font_size = 10
+text = "Psicoce"
+
+[node name="quantAmmo" type="Label" parent="Hud"]
+unique_name_in_owner = true
+offset_left = -7.23684
+offset_top = 14.1447
+offset_right = 32.7632
+offset_bottom = 34.1447
+scale = Vector2(0.434211, 0.434211)
+theme_override_fonts/font = ExtResource("5_wxrnq")
+text = "Text"
+
+[node name="TextureRect" type="TextureRect" parent="Hud/quantAmmo"]
+layout_mode = 0
+offset_left = -10.6061
+offset_top = 46.2121
+offset_right = 44.3939
+offset_bottom = 101.212
+rotation = -1.57079
+texture = ExtResource("11_gnxc6")
+
+[node name="Scorrr" type="ColorRect" parent="Hud"]
+offset_left = 134.0
+offset_top = -107.0
+offset_right = 189.0
+offset_bottom = -69.0
+color = Color(0, 0, 0, 0.188235)
+
+[node name="MetaScore" type="Label" parent="Hud"]
+unique_name_in_owner = true
+offset_left = 141.447
+offset_top = -89.1447
+offset_right = 181.447
+offset_bottom = -66.1447
+theme_override_fonts/font = ExtResource("6_663ew")
+text = "1"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Hud/MetaScore"]
+layout_mode = 0
+offset_left = -5.26316
+offset_top = -16.7763
+offset_right = 45.7368
+offset_bottom = 6.22368
+theme_override_fonts/font = ExtResource("12_mo3v2")
+theme_override_font_sizes/font_size = 18
+text = "Score"
+
 [node name="WarnReload" parent="." instance=ExtResource("8_yv2xl")]
 offset_left = -27.6316
 offset_top = -49.0132
@@ -147,6 +205,16 @@ offset_top = -99.6711
 offset_right = -180.263
 offset_bottom = -99.6711
 scale = Vector2(0.552632, 0.552632)
+
+[node name="SelectPower" parent="." instance=ExtResource("13_11gig")]
+scale = Vector2(0.381579, 0.381579)
+
+[node name="warnings" parent="." instance=ExtResource("14_yqbiq")]
+visible = false
+offset_left = -209.868
+offset_top = 28.9474
+offset_right = -209.868
+offset_bottom = 28.9474
 
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="CooldownHurt" to="." method="_on_timer_timeout"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1teod5vhfm65"]
+[gd_scene load_steps=9 format=3 uid="uid://b1teod5vhfm65"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_5rlbj"]
-[ext_resource type="Texture2D" uid="uid://ckc0odxi0ddwd" path="res://Arts/Background/leno brega.jpeg" id="1_l6km4"]
-[ext_resource type="FontFile" uid="uid://bktq5wp8orp5w" path="res://Arts/Fonts/pixeloid-font/PixeloidSansBold-PKnYd.ttf" id="2_fg20k"]
-[ext_resource type="FontFile" uid="uid://dmadx0ca07f2y" path="res://Arts/Fonts/pixeloid-font/PixeloidMono-d94EV.ttf" id="4_3g46p"]
+[ext_resource type="Texture2D" uid="uid://cc0jw3jrf4vcn" path="res://Arts/Background/New Piskel-1.png (2).png" id="2_gqwq4"]
+[ext_resource type="Texture2D" uid="uid://dl7wdlsqvbxu0" path="res://Arts/Background/New Piskel-1.png (1) (1).png" id="3_0noru"]
+[ext_resource type="FontFile" uid="uid://6imu1fghu52x" path="res://Arts/Fonts/pixeloid-font/PixeloidMono-d94EV.ttf" id="4_3g46p"]
+[ext_resource type="FontFile" uid="uid://csjylw4view7" path="res://Arts/Fonts/press-start-2p-font/PressStart2P-vaV7.ttf" id="4_3im8s"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_acumd"]
-texture = ExtResource("1_l6km4")
+texture = ExtResource("2_gqwq4")
 modulate_color = Color(0.454524, 0.454524, 0.454524, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyeaj"]
@@ -19,7 +20,7 @@ content_margin_left = 50.0
 content_margin_top = 2.0
 content_margin_right = 50.0
 content_margin_bottom = 2.0
-bg_color = Color(0.262669, 0.314391, 0.661545, 1)
+bg_color = Color(0.301961, 0.196078, 0.639216, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -46,77 +47,72 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_acumd")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.5
+offset_top = -16.0
+offset_right = 97.5
+offset_bottom = 179.0
+grow_horizontal = 2
+texture = ExtResource("3_0noru")
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -227.0
-offset_right = 156.5
-offset_bottom = -185.0
+offset_left = -135.0
+offset_top = 161.0
+offset_right = 135.0
+offset_bottom = 203.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_fg20k")
+theme_override_fonts/font = ExtResource("4_3im8s")
 theme_override_font_sizes/font_size = 30
-text = "Cria Adventures"
+text = "MindBreak"
 
-[node name="Start" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -101.5
-offset_top = 160.0
-offset_right = 101.5
-offset_bottom = 198.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 253.0
+offset_right = 691.0
+offset_bottom = 498.0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3g46p")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
-text = "Começar"
+text = "INICIAR"
 
-[node name="Options" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 163.0
-offset_top = 239.0
-offset_right = 349.0
-offset_bottom = 277.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(-706.5, -580)
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3g46p")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
-text = "OPÇÕES"
+text = "CONTROLE"
 
-[node name="Exit" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -101.5
-offset_top = 235.0
-offset_right = 101.5
-offset_bottom = 273.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3g46p")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
+text = "CRÉDITOS"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_3g46p")
 theme_override_font_sizes/font_size = 24
@@ -125,27 +121,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
 text = "SAIR
 "
 
-[node name="Credits" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -362.0
-offset_top = 235.0
-offset_right = -165.0
-offset_bottom = 273.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_3g46p")
-theme_override_font_sizes/font_size = 24
-theme_override_styles/hover = SubResource("StyleBoxFlat_pyeaj")
-theme_override_styles/normal = SubResource("StyleBoxFlat_o6vuu")
-text = "CRÉDITOS"
-
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Options" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Credits" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

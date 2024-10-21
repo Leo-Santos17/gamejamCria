@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1l3w4dnib7ce"]
+
+[ext_resource type="Script" path="res://controls.gd" id="1_1f15s"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(576, 337)
+script = ExtResource("1_1f15s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -23.0
+offset_right = 20.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(27, 31)
+color = Color(0.114897, 0.114897, 0.114897, 0.752941)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 25.0
+offset_right = 122.0
+offset_bottom = 48.0
+text = "Andar
+"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 28.0
+offset_right = 322.0
+offset_bottom = 51.0
+text = "Atirar"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 36.0
+offset_right = 528.0
+offset_bottom = 59.0
+text = "Pausar
+"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 203.0
+offset_right = 360.0
+offset_bottom = 226.0
+text = "Volume
+"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 240.0
+offset_right = 453.0
+offset_bottom = 256.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 21.0
+offset_right = 33.0
+offset_bottom = 52.0
+text = "<
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

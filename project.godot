@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="GameJam"
+config/name="MindBreak"
 run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://Arts/Monster/Monster.svg"
+config/icon="res://Arts/Background/New Piskel-1.png (1) (1).png"
 
 [input]
 

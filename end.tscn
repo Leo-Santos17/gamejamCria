@@ -1,0 +1,165 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr43tbhsf853a"]
+
+[ext_resource type="Script" path="res://game_end.gd" id="1_ujuxn"]
+[ext_resource type="FontFile" uid="uid://5x7mgo7nvr1k" path="res://Arts/Fonts/pixelon-font/Pixelon-OGALo.ttf" id="2_6yaub"]
+[ext_resource type="FontFile" uid="uid://csjylw4view7" path="res://Arts/Fonts/press-start-2p-font/PressStart2P-vaV7.ttf" id="3_mgy22"]
+[ext_resource type="AudioStream" uid="uid://cvp1m0hsqus1q" path="res://Arts/sounds_effects/radio_noise.mp3" id="4_y01q4"]
+[ext_resource type="AudioStream" uid="uid://dvtxvnli6xtgx" path="res://Arts/sounds_effects/police-radio-chatter-30048.mp3" id="5_3gqsd"]
+[ext_resource type="AudioStream" uid="uid://cdirddoftimnv" path="res://Arts/sounds_effects/old-radio-noise-46734.mp3" id="6_6hojf"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ujuxn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0214346, 0.0214346, 0.0214346, 1)
+
+[node name="Apre" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -86.0
+offset_right = 496.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6yaub")
+theme_override_font_sizes/font_size = 24
+text = "Jornal Folha do Leste
+Data: 21 de Outubro de 2024"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+uppercase = true
+
+[node name="P1" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -86.0
+offset_right = 496.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6yaub")
+theme_override_font_sizes/font_size = 24
+text = "A pacata cidade de Vila Nova dos Campos, situada no interior do estado de Minas Gerais, foi abalada por uma tragédia sem precedentes na tarde desta segunda-feira. Um jovem de apenas 17 anos, identificado como Lucas Nogueira, foi responsável por um massacre que deixou inúmeras mortes e vítimas gravemente feridas. Segundo a perícia, o adolescente estava sob os efeitos de uma droga altamente perigosa e crescente no mercado ilícito, chamada Avaj."
+autowrap_mode = 3
+uppercase = true
+
+[node name="P2" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -86.0
+offset_right = 496.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6yaub")
+theme_override_font_sizes/font_size = 24
+text = "Durante o ataque, moradores tentaram desesperadamente deter Lucas, mas a brutalidade da situação escalou rapidamente. Entre os feridos estão um policial, único sobrevivente do ocorrido, tentaram negociar com o jovem e conter a situação, sem sucesso. \"Nós gritávamos para ele parar, mas ele não nos ouvia. Não era mais o Lucas que conhecíamos\", relatou Antônio Mendes, O policial que sobreviveu ao ocorrido."
+autowrap_mode = 3
+uppercase = true
+
+[node name="P3" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -86.5
+offset_right = 496.0
+offset_bottom = 86.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6yaub")
+theme_override_font_sizes/font_size = 24
+text = "A polícia foi chamada imediatamente, mas ao chegarem ao local, as forças de segurança se depararam com uma cena devastadora. Lucas, após causar o massacre, tirou a própria vida com um disparo na cabeça, antes que qualquer negociação ou contenção fosse possível."
+autowrap_mode = 3
+uppercase = true
+
+[node name="P4" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -86.0
+offset_right = 496.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_6yaub")
+theme_override_font_sizes/font_size = 24
+text = "O massacre em Vila Nova dos Campos serviu como um alerta para a crescente onda de violência e instabilidade causada pela nova droga. Cidadãos da região estão em choque, e vigílias estão sendo organizadas em memória das vítimas, que incluem desde trabalhadores locais até crianças que estavam próximas ao local do ataque."
+autowrap_mode = 3
+uppercase = true
+
+[node name="Fim" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -25.0
+offset_right = 75.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_mgy22")
+theme_override_font_sizes/font_size = 50
+text = "Fim"
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="p1" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_y01q4")
+autoplay = true
+
+[node name="police" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_3gqsd")
+
+[node name="noiseRadio" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_6hojf")
+parameters/looping = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

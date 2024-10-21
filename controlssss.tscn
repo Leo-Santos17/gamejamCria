@@ -1,0 +1,131 @@
+[gd_scene load_steps=10 format=3 uid="uid://bkapjcxd442cj"]
+
+[ext_resource type="Texture2D" uid="uid://cc0jw3jrf4vcn" path="res://Arts/Background/New Piskel-1.png (2).png" id="1_agqax"]
+[ext_resource type="Texture2D" uid="uid://bjnjljw068w0m" path="res://Arts/Binds/BindMove.png" id="2_p1i5r"]
+[ext_resource type="Script" path="res://controlssss.gd" id="2_v60bj"]
+[ext_resource type="Texture2D" uid="uid://cmg6kxxg7bddt" path="res://Arts/Binds/mouseImg.png" id="3_d565r"]
+[ext_resource type="Texture2D" uid="uid://dx1yy0edotlm3" path="res://Arts/Binds/ESC.png" id="4_ny7rw"]
+[ext_resource type="Texture2D" uid="uid://bjcyxj8tlhv3h" path="res://Arts/Background/arrow.png" id="6_t5rfm"]
+[ext_resource type="Texture2D" uid="uid://ciedgaoruknsj" path="res://Arts/Background/pressed_arrow.png" id="7_4gnf8"]
+[ext_resource type="Texture2D" uid="uid://bmhsjki765pi5" path="res://Arts/Background/arrow_hover.png" id="8_drq3f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eul8d"]
+texture = ExtResource("1_agqax")
+modulate_color = Color(0.454524, 0.454524, 0.454524, 1)
+
+[node name="Panel2" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_eul8d")
+script = ExtResource("2_v60bj")
+
+[node name="Controls" type="ColorRect" parent="."]
+offset_left = 26.0
+offset_top = 172.0
+offset_right = 1102.0
+offset_bottom = 456.0
+color = Color(0, 0, 0, 0.521569)
+
+[node name="TextureRect" type="TextureRect" parent="Controls"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 70.0
+offset_top = -115.0
+offset_right = 300.0
+offset_bottom = 115.0
+grow_vertical = 2
+texture = ExtResource("2_p1i5r")
+
+[node name="Andar" type="Label" parent="Controls/TextureRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 51.0
+offset_top = 66.0
+offset_right = 192.0
+offset_bottom = 133.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Andar"
+
+[node name="TextureRect2" type="TextureRect" parent="Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -139.0
+offset_right = 144.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d565r")
+
+[node name="Atirar" type="Label" parent="Controls/TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = 73.5
+offset_right = 67.5
+offset_bottom = 140.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Atirar"
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -94.0
+offset_right = -114.0
+offset_bottom = 58.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_ny7rw")
+
+[node name="Pausasr" type="Label" parent="TextureRect3"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = 81.0
+offset_right = 6.0
+offset_bottom = 148.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "Pausar"
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 93.0
+offset_right = 569.0
+offset_bottom = 125.0
+scale = Vector2(2.02251, 2.02251)
+texture_normal = ExtResource("6_t5rfm")
+texture_pressed = ExtResource("7_4gnf8")
+texture_hover = ExtResource("8_drq3f")
+flip_h = true
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_back_pressed"]

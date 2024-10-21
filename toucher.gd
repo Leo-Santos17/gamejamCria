@@ -3,17 +3,19 @@ extends CharacterBody2D
 @onready var player = get_node("/root/Game/Player")
 @onready var animation := $anim as AnimatedSprite2D
 
-const speed = 300
+const speed = 500
 var life = 10
 const limitDistance = 100
 var hurtDamage = 3
 var dano
+var critic = false
 
 func _ready() -> void:
 	$BarLife.upgradeLife(life)
 
 func _physics_process(delta: float) -> void:
 	moveMob()
+	pass
 
 func moveMob():
 	var direction = global_position.direction_to(player.global_position)
@@ -39,6 +41,10 @@ func take_damage():
 	CheckDamageCritic()
 	status()
 	gen($Damage.global_position)
+	if player.vamp:
+		if player.life < player.lifeMax:
+			player.life += 0.1
+			player.status()
 	if life<=0:
 		player.score(100)
 		vampMode()
@@ -64,25 +70,25 @@ func CheckDamageCritic():
 		3:
 			dano = hurtDamage*player.damageMulti
 			life-=dano
-			print("Crítico!")
+			critic = true
 		_:
 			var ale = randi_range(1, hurtDamage-1)
 			dano = ale*player.damageMulti
 			life-=dano
+			critic = false
 
 func gen(dis):
 	var life = preload("res://text_life.tscn")
 	var newLife = life.instantiate()
 	get_parent().add_child(newLife)
-	newLife.is_show(dis, dano)
+	newLife.is_show(dis, dano, critic)
 
 func vampMode():
 	if player.vampMode:
-		var rando = randi_range(1,player.lifeMax-player.life)
-		if rando > player.lifeMax - player.life:
-			player.life = player.lifeMax - player.life
-		else:
-			player.life = rando
+		if player.life < player.lifeMax:
+			player.life += 0.5
+			status()
+			player.status()
 
 func dropItem(n):
 	match n:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://lclsvfgqegyj"]
 
 [ext_resource type="Script" path="res://power_up_ds.gd" id="1_c1x0b"]
-[ext_resource type="Texture2D" uid="uid://bipk1gqon7vc" path="res://Arts/PowerUps/powerUp-DS.png" id="2_1kuw3"]
+[ext_resource type="Texture2D" uid="uid://1cud074s7pp3" path="res://Arts/PowerUps/Vamp.png" id="2_2wfxu"]
 [ext_resource type="AudioStream" uid="uid://jbhpkjxpexpv" path="res://Arts/sounds_effects/buble.mp3" id="3_42n8p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_teqt6"]
@@ -15,7 +15,7 @@ script = ExtResource("1_c1x0b")
 shape = SubResource("CircleShape2D_teqt6")
 
 [node name="PowerUp" type="Sprite2D" parent="."]
-texture = ExtResource("2_1kuw3")
+texture = ExtResource("2_2wfxu")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

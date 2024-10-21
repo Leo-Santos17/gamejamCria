@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var player = get_node("/root/Game/Player")
-@onready var HUD = get_node("/root/Game/Player/HUD_Power/Adapte/SpeedBala")
+@onready var HUD = get_node("/root/Game/Player/HUD_Power/Adapte/Vamp")
 var time : float
 var rate = 1.5
 
@@ -20,18 +20,15 @@ func _on_timer_timeout() -> void:
 		$Timer.stop()
 		end_effect()
 		time = 0
-		player.speedShoot = player.speedShootF
-		player.DS = 0
+		player.vamp = false
 		HUD.visible = false
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	player.DS += 1
 	$effect.play()
+	player.vamp = true
 	time = 0
-	player.speedShoot *= rate
 	$CollisionShape2D.queue_free()
 	$Timer.start()
 	HUD.visible = true
-	HUD.get_child(0).text = str(player.DS,"X")
 	visible = false

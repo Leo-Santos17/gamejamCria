@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://c13nfea54xh5v"]
+
+[ext_resource type="Script" path="res://player_dist.gd" id="1_k3bxg"]
+[ext_resource type="PackedScene" uid="uid://levfon0p1tu2" path="res://gun_dist.tscn" id="2_tb2kn"]
+[ext_resource type="Script" path="res://gun_dist.gd" id="3_cxu8v"]
+[ext_resource type="Texture2D" uid="uid://clwy3qvwe2ymt" path="res://assets/Character/character - walk toward.png" id="4_bi57k"]
+[ext_resource type="AudioStream" uid="uid://ctykpci5pibc6" path="res://Arts/sounds_effects/Hurt_player.mp3" id="5_sibar"]
+[ext_resource type="AudioStream" uid="uid://xx87m7q1xf0d" path="res://Arts/sounds_effects/dead.mp3" id="6_0r4p1"]
+[ext_resource type="PackedScene" uid="uid://4vfnt8icgu07" path="res://warnings.tscn" id="14_yqbiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6vuq"]
+atlas = ExtResource("4_bi57k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fyeyt"]
+atlas = ExtResource("4_bi57k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da1h7"]
+atlas = ExtResource("4_bi57k")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hdnps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6vuq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fyeyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da1h7")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3yxle"]
+radius = 11.5319
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56ni4"]
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(3.04, 3.04)
+collision_layer = 2147483649
+script = ExtResource("1_k3bxg")
+
+[node name="Gun2" parent="." instance=ExtResource("2_tb2kn")]
+script = ExtResource("3_cxu8v")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.328947, -0.986842)
+scale = Vector2(0.77097, 0.77097)
+sprite_frames = SubResource("SpriteFrames_hdnps")
+animation = &"walk"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.328947, 0)
+shape = SubResource("CircleShape2D_3yxle")
+
+[node name="getHurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_sibar")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0r4p1")
+
+[node name="warnings" parent="." instance=ExtResource("14_yqbiq")]
+visible = false
+offset_left = -211.184
+offset_top = 17.4342
+offset_right = -211.184
+offset_bottom = 17.4342
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_56ni4")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

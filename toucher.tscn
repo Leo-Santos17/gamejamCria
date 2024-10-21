@@ -54,6 +54,7 @@ offset_left = -77.0
 offset_top = -103.0
 offset_right = -77.0
 offset_bottom = -103.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Damage" type="Marker2D" parent="."]
 position = Vector2(-77, -101)

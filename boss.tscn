@@ -1,0 +1,93 @@
+[gd_scene load_steps=12 format=3 uid="uid://tdjyvpumbmq0"]
+
+[ext_resource type="Script" path="res://boss.gd" id="1_v0rp2"]
+[ext_resource type="PackedScene" uid="uid://ck34c7faewt2l" path="res://bar_life.tscn" id="2_luere"]
+[ext_resource type="AudioStream" uid="uid://0jm47ehkpkbn" path="res://Arts/sounds_effects/tennis-smash-100733.mp3" id="3_siqn0"]
+[ext_resource type="AudioStream" uid="uid://bep0emhxrklxp" path="res://Arts/sounds_effects/Jumpscare.mp3" id="4_batx0"]
+[ext_resource type="Texture2D" uid="uid://colot2vpbvab8" path="res://Arts/Monster/Boss.png" id="6_lvy5t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ybqfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vt8ex"]
+atlas = ExtResource("6_lvy5t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_058ac"]
+atlas = ExtResource("6_lvy5t")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4l0ok"]
+atlas = ExtResource("6_lvy5t")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hclbd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vt8ex")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_058ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4l0ok")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gu3rv"]
+radius = 77.0065
+
+[node name="Boss" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_v0rp2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6.76, 6.76)
+shape = SubResource("CircleShape2D_ybqfp")
+
+[node name="BarLife" parent="." instance=ExtResource("2_luere")]
+offset_left = -77.0
+offset_top = -103.0
+offset_right = -77.0
+offset_bottom = -103.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Damage" type="Marker2D" parent="."]
+position = Vector2(-77, -101)
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_siqn0")
+volume_db = -20.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_batx0")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, 2)
+scale = Vector2(5.9375, 5.9375)
+sprite_frames = SubResource("SpriteFrames_hclbd")
+animation = &"Walk"
+speed_scale = 1.5
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Spawnn" type="Marker2D" parent="."]
+position = Vector2(0, 80)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 5)
+shape = SubResource("CircleShape2D_gu3rv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_giveDamage_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

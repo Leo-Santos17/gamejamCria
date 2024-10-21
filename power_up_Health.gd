@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var player = get_node("/root/Game/Player")
 var time : float
-var rate = 1
+var rate = 2
 
 @onready var end = preload("res://Arts/sounds_effects/buble.mp3")
 func effect():
